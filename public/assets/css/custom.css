@@ -1,0 +1,45 @@
+.header-v3 .navbar-default {
+    background-color: #555555;
+}
+
+.header-v6 .navbar {
+    background-color: #555555;
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+.header-v3 .navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.header-v6.header-sticky.header-fixed-shrink > div > a {
+    color: white;
+}
+
+.footer-v1 .copyright {
+    background: #555;
+}
+
+.sky-form header {
+    color: white;
+    background-color: #555555;
+}
+
+#doctorBox dd,
+dt {
+    font-size: 15px;
+}
+
+.chi-siamo-footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+@media(max-width: 800px) {
+    .chi-siamo-footer {
+        position: relative;
+    }
+}

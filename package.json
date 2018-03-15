@@ -1,0 +1,29 @@
+{
+  "name": "polimi-hyp-2017-project",
+  "version": "1.0.0",
+  "description": "hypermedia website ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://polimi-hyp-2017-10481324@bitbucket.org/polimi-hyp-2017-team-10494309/polimi-hyp-2017-project.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.17.1",
+    "express": "4.15.2",
+    "knex": "^0.13.0",
+    "lodash": "4.17.4",
+    "nodemailer": "^4.0.1",
+    "pg": "6.2.3",
+    "sqlite3": "^3.1.8"
+  },
+  "engines": {
+    "node": ">= 7.5.0"
+  },
+  "author": "",
+  "homepage": "https://bitbucket.org/polimi-hyp-2017-team-10494309/polimi-hyp-2017-project#readme"
+}
