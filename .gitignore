@@ -1,4 +1,4 @@
-# Logs
+# Logs 
 logs
 *.log
 npm-debug.log*
@@ -57,8 +57,11 @@ typings/
 # dotenv environment variables file
 
 .env
+<<<<<<< HEAD
 
 # database
 other/clinicdb.sqlite
 
 package-lock.json
+=======
+>>>>>>> 004e2379abd22f30c3a25de15d2767a41c6bee06
