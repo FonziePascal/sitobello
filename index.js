@@ -44,7 +44,7 @@ function initSqlDB() {
                 filename: "./other/clinicdb.sqlite"
             }
         });
-        // actual version of the db 
+        // actual version of the db
     } else {
         console.log("non-test mode");
         sqlDb = sqlDbFactory({
@@ -208,8 +208,8 @@ function initDb() {
 
 app.use(express.static(__dirname + "/public"));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({inflate: true}));
+app.use(bodyParser.urlencoded({extended: true, inflate: true}));
 
 
 // Register REST entry points
@@ -285,7 +285,7 @@ app.get("/locations/:id", function(req, res) {
         })
 })
 
-
+//NOT RESTFUL
 // given a service id, retrieve data of the doctors working in it
 // result returned as a JSON array
 app.get("/doctorsbyservice/:id", function(req, res) {
@@ -296,7 +296,18 @@ app.get("/doctorsbyservice/:id", function(req, res) {
         })
 })
 
+//MAYBE RESTFUL
+// given a service id, retrieve data of the doctors working in it
+// result returned as a JSON array
+app.get("/services/:id/doctors", function(req, res) {
+    let myQuery = sqlDb("doctors");
+    myQuery.select().where("serviceId", req.params.id)
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
 
+//NOT RESTFUL
 // given a location id, retrieve data of the services located in that location
 // result returned as a JSON array
 app.get("/servicesbylocation/:id", function(req, res) {
@@ -308,10 +319,34 @@ app.get("/servicesbylocation/:id", function(req, res) {
         })
 })
 
+//MAYBE RESTFUL
+// given a location id, retrieve data of the services located in that location
+// result returned as a JSON array
+app.get("/locations/:id/services", function(req, res) {
+    let myQuery = sqlDb.select().from("services").whereIn("id", function() {
+            this.select("serviceId").from("servicesLocations").where("locationId", req.params.id);
+        })
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
 
-// given a service id, retrieve data of the locations in which that service exists 
+//NOT RESTFUL
+// given a service id, retrieve data of the locations in which that service exists
 // result returned as a JSON array
 app.get("/locationsbyservice/:id", function(req, res) {
+    let myQuery = sqlDb.select().from("locations").whereIn("id", function() {
+            this.select("locationId").from("servicesLocations").where("serviceId", req.params.id);
+        })
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
+
+//MAYBE RESTFUL
+// given a service id, retrieve data of the locations in which that service exists
+// result returned as a JSON array
+app.get("/services/:id/locations", function(req, res) {
     let myQuery = sqlDb.select().from("locations").whereIn("id", function() {
             this.select("locationId").from("servicesLocations").where("serviceId", req.params.id);
         })
@@ -324,12 +359,17 @@ app.get("/locationsbyservice/:id", function(req, res) {
 ///////////////// APP.POST //////////////////
 /////////////////////////////////////////////
 
+//**NOTE**: current implementation of the input form has a slightly
+//counter-intuitive behavior,in order to make it easier to test. The input
+//email address is used as recipient of the message instead of sender.
+//In this way a tester is able to easily verify the behavior of the feature.
+
 /*  Form data handling. Given the following data:
  *      - name: writer's name
  *      - mail: writer's mail
  *      - subject: subject of the inquery
  *      - message: writer's message
- *      
+ *
  *      an email will be sent to the writer's mail
  */
 app.post('/contactForm', function(req, res) {
