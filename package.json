@@ -1,15 +1,15 @@
 {
-  "name": "polimi-hyp-2017-project",
+  "name": "sitobello",
   "version": "1.0.0",
-  "description": "hypermedia website ",
+  "description": "sito in costruzione",
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "node ./index.js"
+	"start": "node ./index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://polimi-hyp-2017-10481324@bitbucket.org/polimi-hyp-2017-team-10494309/polimi-hyp-2017-project.git"
+    "url": "git+https://github.com/FonziePascal/sitobello.git"
   },
   "license": "ISC",
   "dependencies": {
@@ -24,6 +24,9 @@
   "engines": {
     "node": ">= 7.5.0"
   },
-  "author": "",
-  "homepage": "https://bitbucket.org/polimi-hyp-2017-team-10494309/polimi-hyp-2017-project#readme"
+  "author": "LSM - LucaSaraManu",
+  "bugs": {
+    "url": "https://github.com/FonziePascal/sitobello/issues"
+  },
+  "homepage": "https://github.com/FonziePascal/sitobello#readme"
 }
