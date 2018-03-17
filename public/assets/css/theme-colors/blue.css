@@ -7,33 +7,33 @@
 */
 
 a {
-  color: #3498db;
+  color: #31502E;
 }
 a:focus,
 a:hover,
 a:active {
-	color: #3498db;
+	color: #31502E;
 }
 .color-green {
-	color: #3498db;
+	color: #333333;
 }
 a.read-more:hover {
-	color:#3498db;
+	color:#31502E;
 }
 .linked:hover {
-	color:#3498db;
+	color:#31502E;
 }
 
 /* Headers Default
 ------------------------------------*/
 .header .navbar-nav > .active > a {
-  color: #3498db;
+  color: #31502E;
 }
 .header .navbar-nav > .active > a {
-  border-color: #3498db;
+  border-color: #31502E;
 }
 .header .dropdown-menu {
-	border-top: solid 2px #3498db;
+	border-top: solid 2px #31502E;
 }
 .header .navbar-nav > li:hover > a {
   color: #2980b9;
@@ -82,14 +82,14 @@ a.read-more:hover {
 /*Dark version*/
 @media (max-width: 991px) {
 	.header.header-dark .navbar-nav .dropdown > a:hover {
-		color: #3498db;
+		color: #31502E;
 	}
 }
 
 @media (min-width: 992px) {
 	.header.header-dark .navbar-nav > li > a:hover,
 	.header.header-dark .navbar-nav > .active > a {
-		color: #3498db !important;
+		color: #31502E !important;
 	}
 }
 
@@ -97,7 +97,7 @@ a.read-more:hover {
 ------------------------------------*/
 /*Fix hover color for the little icons v1.9*/
 .header-v1 .topbar-v1 .top-v1-data li a:hover i {
-	color: #3498db;
+	color: #31502E;
 }
 
 .header-v1 .navbar-default .navbar-nav > .active > a,
@@ -109,13 +109,13 @@ a.read-more:hover {
   border-color: #3498db
 }
 .header-v1 .navbar-default .navbar-nav > li:hover > a {
-  color: #3498db;
+  color: #31502E;
 }
 .header-v1 .navbar .nav > li > .search:hover {
-  color: #3498db;
+  color: #31502E;
 }
 .header-v1 .navbar .nav > li > .search:hover {
-  color: #3498db;
+  color: #31502E;
 }
 .header-v1 .navbar-default .navbar-toggle {
   border-color: #2980b9;
@@ -126,7 +126,7 @@ a.read-more:hover {
   background:  #3498db;
 }
 .header-v1 .navbar-toggle:hover {
-  background:  #2980b9 !important;
+  background:  #3498db !important;
 }
 
 /* Design for max-width: 991px */
@@ -153,7 +153,7 @@ a.read-more:hover {
   border-color: #3498db;
 }
 .header-v2 .navbar-default .navbar-toggle {
-  border-color: #2980b9;
+  border-color: #3498db;
 }
 .header-v2 .navbar-toggle,
 .header-v2 .navbar-default .navbar-toggle:hover,
@@ -161,7 +161,7 @@ a.read-more:hover {
   background:  #3498db;
 }
 .header-v2 .navbar-toggle:hover {
-  background:  #2980b9 !important;
+  background:  #3498db !important;
 }
 
 /* Design for max-width: 991px */
@@ -173,35 +173,35 @@ a.read-more:hover {
 	  color: #fff !important;
 	}
 	.header-v2 .navbar-default .navbar-nav > li > a:hover {
-   	color: #3498db;
+   	color: #31502E;
 	}
 }
 
 /* Headers v3
 ------------------------------------*/
 .header-v3 .navbar-default .navbar-nav > .active > a {
-  color: #3498db;
+  color: #31502E;
 }
 .header-v3 .navbar-default .navbar-nav > li:hover > a {
-  color: #2980b9;
+  color: #31502E;
 }
 .header-v3 .dropdown-menu {
-  border-color: #3498db;
+  border-color: #31502E;
 }
 .header-v3 .navbar-default .navbar-toggle {
-  border-color: #2980b9;
+  border-color: #31502E;
 }
 .header-v3 .navbar-toggle,
 .header-v3 .navbar-default .navbar-toggle:hover,
 .header-v3 .navbar-default .navbar-toggle:focus {
-  background:  #3498db;
+  background:  #31502E;
 }
 .header-v3 .navbar-toggle:hover {
-  background:  #2980b9 !important;
+  background:  #31502E !important;
 }
 .header-v3 .navbar .nav > li > .search:hover {
   background: inherit;
-  color: #3498db;
+  color: #31502E;
 }
 
 /* Design for max-width: 991px */
@@ -217,7 +217,7 @@ a.read-more:hover {
 	  border-color: #eee;
 	}
 	.header-v3 .navbar .nav > li > .search:hover {
-	  background:  #3498db;
+	  background:  #31502E;
 	}
 }
 
@@ -225,26 +225,26 @@ a.read-more:hover {
 ------------------------------------*/
 /*Fix hover color for the little icons v1.9*/
 .topbar-v1 .top-v1-data li a:hover i {
-	color: #3498db;
+	color: #31502E;
 }
 .header-v4 .navbar-default .navbar-nav > li > a:hover,
 .header-v4 .navbar-default .navbar-nav > .active > a {
   border-color: #3498db;
 }
 .header-v4 .navbar-default .navbar-nav > .active > a {
-  color: #3498db;
+  color: #31502E;
 }
 .header-v4 .navbar-default .navbar-nav > li:hover > a {
   border-color:  #3498db;
-  color: #2980b9;
+  color: #31502E;
 }
 .header-v4 .navbar .nav > li > .search:hover {
-  color: #3498db;
+  color: #31502E;
 }
 .header-v4 .navbar-default .navbar-nav > .open > a,
 .header-v4 .navbar-default .navbar-nav > .open > a:hover,
 .header-v4 .navbar-default .navbar-nav > .open > a:focus {
-  color: #3498db;
+  color: #31502E;
 }
 
 /* Design for max-width: 991px */
@@ -255,13 +255,13 @@ a.read-more:hover {
 	.header-v4 .navbar-default .navbar-nav > .active > a,
 	.header-v4 .navbar-default .navbar-nav > .active > a:hover,
 	.header-v4 .navbar-default .navbar-nav > .active > a:focus {
-	  color: #3498db !important;
+	  color: #31502E !important;
 	}
 	.header-v4 .navbar-default .navbar-nav > .active > a {
 	  border-color: #eee;
 	}
 	.header-v4 .navbar .nav > li > .search:hover {
-	  background:  #3498db;
+	  background:  #31502E;
 	}
 }
 
@@ -275,15 +275,15 @@ a.read-more:hover {
 	}
 }
 .header-v5 .navbar-default .navbar-nav > .active > a {
-  color: #3498db;
+  color: #31502E;
 }
 .header-v5 .navbar-default .navbar-nav > li:hover > a {
-  color: #3498db;
+  color: #31502E;
 }
 .header-v5 .navbar-default .navbar-nav > .open > a,
 .header-v5 .navbar-default .navbar-nav > .open > a:hover,
 .header-v5 .navbar-default .navbar-nav > .open > a:focus {
-  color: #3498db;
+  color: #31502E;
 }
 .header-v5 .dropdown-menu li > a:hover {
   background:  #3498db;
@@ -302,12 +302,12 @@ a.read-more:hover {
   background: none;
 }
 .header-v5 .style-list li a:hover {
-  color: #3498db;
+  color: #31502E;
 }
 
 /*bug fixed v1.9*/
 .header-v5 .subtotal .subtotal-cost {
-    color: #3498db;
+    color: #31502E;
 }
 
 /*bug fixed v1.9*/
@@ -337,7 +337,7 @@ a.read-more:hover {
 ------------------------------------*/
 /* Search */
 .header-v6 .shopping-cart .shopping-cart-open {
-	border-top-color: #3498db !important;
+	border-top-color: #31502E !important;
 }
 .header-v6 li.menu-icons span.badge {
 	background: #3498db;
@@ -353,7 +353,7 @@ a.read-more:hover {
 	.header-v6 .navbar-nav > .active > a,
 	.header-v6 .navbar-nav > .active > a:hover,
 	.header-v6 .navbar-nav > .active > a:focus {
-		color: #3498db !important;
+		color: #31502E !important;
 	}
 	.header-v6 .nav .open > a,
 	.header-v6 .nav .open > a:hover,
@@ -366,21 +366,21 @@ a.read-more:hover {
 	.header-v6 .navbar-nav .open .dropdown-menu > .active > a,
 	.header-v6 .navbar-nav .open .dropdown-menu > .active > a:hover,
 	.header-v6 .navbar-nav .open .dropdown-menu > .active > a:focus {
-		color: #3498db !important;
+		color: #31502E !important;
 	}
 	.header-v6 .mega-menu .equal-height-list li a:hover {
-		color: #3498db !important;
+		color: #31502E !important;
 	}
 
 	/* Classic Dark */
 	.header-v6 .mega-menu .equal-height-list li a:hover {
-		color: #3498db;
+		color: #31502E;
 	}
 
 	/* Dark Responsive Navbar */
 	.header-v6.header-dark-res-nav .navbar-nav > li a:hover,
 	.header-v6.header-dark-res-nav .navbar-nav .open .dropdown-menu > li > a:hover {
-		color: #3498db;
+		color: #31502E;
 	}
 	.header-v6.header-dark-res-nav .nav .open > a,
 	.header-v6.header-dark-res-nav .nav .open > a:hover,
@@ -393,23 +393,23 @@ a.read-more:hover {
 	/* Default Style */
 	.header-fixed .header-v6.header-fixed-shrink .navbar-nav .active > a,
 	.header-fixed .header-v6.header-fixed-shrink .navbar-nav li > a:hover {
-		color: #3498db !important;
+		color: #31502E !important;
 	}
 	.header-v6 .dropdown-menu .active > a,
 	.header-v6 .dropdown-menu li > a:hover,
 	.header-fixed .header-v6.header-fixed-shrink .dropdown-menu .active > a,
 	.header-fixed .header-v6.header-fixed-shrink .dropdown-menu li > a:hover {
-		color: #3498db !important;
+		color: #31502E !important;
 	}
 	.header-fixed .header-v6.header-fixed-shrink .navbar-nav .active > a,
 	.header-fixed .header-v6.header-fixed-shrink .navbar-nav li > a:hover {
-		color: #3498db;
+		color: #31502E;
 	}
 
 	/* Classic White */
 	.header-fixed .header-v6.header-classic-white .navbar-nav .active > a,
 	.header-fixed .header-v6.header-classic-white .navbar-nav li > a:hover {
-		color: #3498db;
+		color: #31502E;
 	}
 
 	/* Classic Dark */
@@ -417,23 +417,23 @@ a.read-more:hover {
 	.header-v6.header-classic-dark .navbar-nav li > a:hover,
 	.header-fixed .header-v6.header-classic-dark.header-fixed-shrink .navbar-nav .active > a,
 	.header-fixed .header-v6.header-classic-dark.header-fixed-shrink .navbar-nav li > a:hover {
-		color: #3498db;
+		color: #31502E;
 	}
 	.header-v6.header-classic-dark .dropdown-menu .active > a,
 	.header-v6.header-classic-dark .dropdown-menu li > a:hover {
-		color: #3498db !important;
+		color: #31502E !important;
 	}
 
 	/* Dark Dropdown */
 	.header-v6.header-dark-dropdown .dropdown-menu .active > a,
 	.header-v6.header-dark-dropdown .dropdown-menu li > a:hover {
-		color: #3498db;
+		color: #31502E;
 	}
 
 	/* Dark Scroll */
 	.header-fixed .header-v6.header-dark-scroll.header-fixed-shrink .navbar-nav .active > a,
 	.header-fixed .header-v6.header-dark-scroll.header-fixed-shrink .navbar-nav li > a:hover {
-		color: #3498db;
+		color: #31502E;
 	}
 }
 
@@ -441,22 +441,22 @@ a.read-more:hover {
 ------------------------------------*/
 .header-v7 .navbar-default .navbar-nav > li > a:hover,
 .header-v7 .navbar-default .navbar-nav > li.active > a {
-	color: #3498db !important;
+	color: #31502E !important;
 }
 .header-v7 .dropdown-menu .active > a,
 .header-v7 .dropdown-menu li > a:focus,
 .header-v7 .dropdown-menu li > a:hover {
-	color: #3498db !important;
+	color: #31502E !important;
 }
 .header-v7 .navbar-default .navbar-nav > li > a:hover,
 .header-v7 .navbar-default .navbar-nav > li > a:focus,
 .header-v7 .navbar-default .navbar-nav > .active > a,
 .header-v7 .navbar-default .navbar-nav > .active > a:hover,
 .header-v7 .navbar-default .navbar-nav > .active > a:focus {
-	color: #3498db;
+	color: #31502E;
 }
 .header-socials li a:hover {
-  color: #3498db;
+  color: #31502E;
 }
 
 /* Sliders
@@ -485,14 +485,14 @@ a.read-more:hover {
 /* Buttons
 ------------------------------------*/
 .btn-u {
-	background: #3498db;
+	background: #31502E;
 }
 .btn-u:hover,
 .btn-u:focus,
 .btn-u:active,
 .btn-u.active,
 .open .dropdown-toggle.btn-u {
-	background: #2980b9;
+	background: #31502E;
 	color: #fff;
 }
 
@@ -550,7 +550,7 @@ a.read-more:hover {
 .headline h2,
 .headline h3,
 .headline h4 {
-	border-bottom:2px solid #3498db;
+	border-bottom:2px solid #31502E;
 }
 
 /* Blockquote */
@@ -579,7 +579,7 @@ blockquote.hero.hero-default:hover {
 .copyright a,
 .footer a:hover,
 .copyright a:hover {
-	color: #3498db;
+	color: #333333;
 }
 
 /* Footer Blog */
@@ -665,14 +665,14 @@ blockquote.hero.hero-default:hover {
 /* Info Blocks
 ------------------------------------*/
 .info-blocks:hover i.icon-info-blocks {
-	color: #3498db;
+	color: #31502E;
 }
 
 /* Breadcrumb
 ------------------------------------*/
 .breadcrumb li.active,
 .breadcrumb li a:hover {
-	color:#3498db;
+	color:#31502E;
 }
 
 /* About Page
@@ -683,7 +683,7 @@ blockquote.hero.hero-default:hover {
 
 /* Social Icons */
 .team ul.team-socail li i:hover {
-	background: #3498db;
+	background: #31502E;
 }
 
 /* Right Sidebar
@@ -785,7 +785,7 @@ ul.blog-tags a:hover {
 ------------------------------------*/
 .social-icons-v1 i:hover {
   color: #fff;
-  background: #3498db;
+  background: #31502E;
 }
 
 /* Magazine Page
@@ -816,30 +816,30 @@ ul.blog-tags a:hover {
 ------------------------------------*/
 /* Tag Boxes v1 */
 .tag-box-v1 {
-	border-top: solid 2px #3498db;
+	border-top: solid 2px #89AC10;
 }
 
 /* Tag Boxes v2 */
 .tag-box-v2 {
-	border-left: solid 2px #3498db;
+	border-left: solid 2px #89AC10;
 }
 
 /* Tag Boxes v7 */
 .tag-box-v7 {
-	border-bottom: solid 2px #3498db;
+	border-bottom: solid 2px #89AC10;
 }
 
 /* Font Awesome Icon Page Style */
 .fa-icons li:hover {
-  color: #3498db;
+  color: #89AC10;
 }
 .fa-icons li:hover i {
-  background: #3498db;
+  background: #89AC10;
 }
 
 /* GLYPHICONS Icons Page Style */
 .bs-glyphicons li:hover {
-  color: #3498db;
+  color: #89AC10;
 }
 
 /* Navigation
@@ -883,7 +883,7 @@ ul.blog-tags a:hover {
 ------------------------------------*/
 /* Image-hover */
 #effect-2 figure .img-hover {
-	background: #3498db;
+	background: #89AC10;
 }
 
 /* Blog Large Page
@@ -1100,7 +1100,7 @@ i.icon-bg-u {
 ------------------------------------*/
 /* Buttons */
 .sky-form .button {
-	background: #3498db;
+	background: #89AC10;
 }
 
 /* Rating */
@@ -1466,7 +1466,7 @@ i.icon-bg-u {
 /* Top Control
 ------------------------------------*/
 #topcontrol:hover {
-  background-color: #3498db;
+  background-color: #68820C;
 }
 
 /* News Info
