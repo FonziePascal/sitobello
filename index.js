@@ -17,7 +17,7 @@ const nodemailer = require("nodemailer");
 ////////////////////////////////////////////////
 
 // get json files that contains data to populate db
-let doctorsList = require("./other/doctorsdata.json");
+let peopleList = require("./other/peopledata.json");
 let locationsList = require("./other/locationsdata.json");
 let servicesList = require("./other/servicesdata.json");
 let servicesLocationsList = require("./other/serviceslocationsdata.json");
@@ -57,11 +57,11 @@ function initSqlDB() {
 }
 
 
-function initDoctorsTable() {
-    return sqlDb.schema.hasTable("doctors").then(exists => {
+function initPeopleTable() {
+    return sqlDb.schema.hasTable("people").then(exists => {
         if (!exists) {
             sqlDb.schema
-                .createTable("doctors", table => {
+                .createTable("people", table => {
                     // create the table
                     table.increments("id").primary();
                     table.string("name");
@@ -74,11 +74,11 @@ function initDoctorsTable() {
                 })
                 .then(() => {
                     return Promise.all(
-                        _.map(doctorsList, p => {
+                        _.map(peopleList, p => {
                             // insert the row
                             // delete p.basicInfo;
-                            return sqlDb("doctors").insert(p).catch(function(err) {
-                                console.log("ERRORE MENTRE RIEMPIO DOCTORS");
+                            return sqlDb("people").insert(p).catch(function(err) {
+                                console.log("ERRORE MENTRE RIEMPIO PEOPLE");
                                 console.log(err);
                                 // console.log(err);
                             });
@@ -193,7 +193,7 @@ function initServicesLocationsTable() {
 // for each table required, check if already existing
 // if not, create and populate
 function initDb() {
-    initDoctorsTable();
+    initPeopleTable();
     initLocationsTable();
     initServicesTable();
     initServicesLocationsTable();
@@ -239,8 +239,8 @@ app.get("/whoweare", function(req, res) {
 
 // retrieve data about all the doctors
 // result returned as a JSON array
-app.get("/doctors", function(req, res) {
-    let myQuery = sqlDb("doctors").orderByRaw('surname, name')
+app.get("/people", function(req, res) {
+    let myQuery = sqlDb("people").orderByRaw('surname, name')
         .then(result => {
             res.send(JSON.stringify(result));
         })
@@ -257,8 +257,8 @@ app.get("/locations", function(req, res) {
 
 // given a doctor id, retrieve all data about that doctor
 // result returned as a JSON array with a single element
-app.get("/doctors/:id", function(req, res) {
-    let myQuery = sqlDb("doctors");
+app.get("/people/:id", function(req, res) {
+    let myQuery = sqlDb("people");
     myQuery.where("id", req.params.id)
         .then(result => {
             res.send(JSON.stringify(result));
@@ -288,8 +288,8 @@ app.get("/locations/:id", function(req, res) {
 //NOT RESTFUL
 // given a service id, retrieve data of the doctors working in it
 // result returned as a JSON array
-app.get("/doctorsbyservice/:id", function(req, res) {
-    let myQuery = sqlDb("doctors");
+app.get("/peoplebyservice/:id", function(req, res) {
+    let myQuery = sqlDb("people");
     myQuery.select().where("serviceId", req.params.id)
         .then(result => {
             res.send(JSON.stringify(result));
@@ -299,8 +299,8 @@ app.get("/doctorsbyservice/:id", function(req, res) {
 //MAYBE RESTFUL
 // given a service id, retrieve data of the doctors working in it
 // result returned as a JSON array
-app.get("/services/:id/doctors", function(req, res) {
-    let myQuery = sqlDb("doctors");
+app.get("/services/:id/people", function(req, res) {
+    let myQuery = sqlDb("people");
     myQuery.select().where("serviceId", req.params.id)
         .then(result => {
             res.send(JSON.stringify(result));
@@ -379,15 +379,15 @@ app.post('/contactForm', function(req, res) {
         port: 465,
         secure: true, // use SSL
         auth: {
-            user: 'clinic.pms@gmail.com',
-            pass: 'megliosucochemaleaccompagnato'
+            user: 'cooperativaandy@gmail.com',
+            pass: 'andycapandycap'
         }
     };
     var transporter = nodemailer.createTransport(smtpConfig);
 
     // setup e-mail data with unicode symbols
     var mailOptions = {
-        from: '"' + req.body.name + '" <clinic.pms@gmail.com>', // sender address
+        from: '"' + req.body.name + '" <cooperativaandy@gmail.com>', // sender address
         to: req.body.mail, // list of receivers
         subject: req.body.subject, // Subject line
         html: '<p>Message: ' + req.body.message + '</p>' // html body
