@@ -165,7 +165,7 @@
 
 /*Navbar Menu*/
 .header .navbar-nav > li > a {
-	color: #687074;
+	color: #A1C22D;
 	font-size: 15px;
 	font-weight:400;
 	text-transform: uppercase;
@@ -304,7 +304,7 @@
 
 	.header .dropdown .dropdown-submenu > a {
 		font-size: 13px;
-		color: #555 !important;
+		color: #89AC10 !important;
 		text-transform: uppercase;
 	}
 }
@@ -376,11 +376,11 @@
 		border-radius: 0;
 		z-index: 9999 !important;
 		border-top: solid 2px #72c02c;
-		border-bottom: solid 2px #687074;
+		border-bottom: solid 2px #A1C22D;
 	}
 
 	.header .dropdown-menu li a {
-		color: #687074;
+		color: #A1C22D;
 		font-size: 13px;
 		font-weight: 400;
 		padding: 6px 15px;
@@ -389,7 +389,7 @@
 
 	.header .dropdown-menu .active > a,
 	.header .dropdown-menu li > a:hover {
-		color: #687074;
+		color: #A1C22D;
 		filter: none !important;
 		background: #eee !important;
 		-webkit-transition: all 0.1s ease-in-out;
@@ -769,7 +769,7 @@
 	}
 
 	.header .mega-menu .equal-height-list li a {
-		color: #687074;
+		color: #A1C22D;
 		display: block;
 		font-size: 13px;
 		font-weight: 400;
@@ -782,7 +782,7 @@
 	.header .mega-menu .equal-height-list > .active > a,
 	.header .mega-menu .equal-height-list > .active > a:hover,
 	.header .mega-menu .equal-height-list > .active > a:focus {
-		color: #555;
+		color: #89AC10;
 		background-color: #e7e7e7;
 	}
 
@@ -800,7 +800,7 @@
 /*Header*/
 .header.header-dark {
 	background: #2d2d2d;
-	border-bottom-color: #555;
+	border-bottom-color: #89AC10;
 }
 
 /*Topbar*/
@@ -823,7 +823,7 @@
 .header.header-dark .topbar ul.languages li a:hover,
 .header.header-dark .topbar ul.languages li.active a {
 	color: #bbb;
-	background: #555;
+	background: #89AC10;
 }
 
 /*Navbar Nav*/
