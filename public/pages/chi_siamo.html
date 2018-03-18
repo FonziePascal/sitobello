@@ -143,7 +143,7 @@
                         <h2 id="locationName">Chi Siamo</h2>
                     </div>
                   <!--===  <p id="infoText"> ... </p> ===-->
-                            <p > Chi saremo mai noi per dire che cosa scrivere in questa pagina? </p>
+                            <p id="whowearetext"> Chi saremo mai noi per dire che cosa scrivere in questa pagina? </p>
                     <p>
 
                     </p>
@@ -213,7 +213,7 @@
     <!-- JS Page Level -->
     <script type="text/javascript" src="../assets/js/app.js"></script>
     <script type="text/javascript">
-    /* jQuery(document).ready(function() {
+     jQuery(document).ready(function() {
         App.init();
         fetch(`/whoweare`)
             .then(function(response) {
@@ -222,12 +222,12 @@
             })
             .then(function(data) {
                 console.log(data[0].info);
-                document.getElementById('infoText').textContent = data[0].info;
+                document.getElementById('whowearetext').textContent = data[0].info;
             }).catch(function(err) {
                 // Gets called if request fails, or even if .then fails
                 return badRequest();
             });
-    }); */
+    });
     </script>
     <!--[if lt IE 9]>
     <script src="assets/plugins/respond.js"></script>
