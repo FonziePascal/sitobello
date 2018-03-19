@@ -17,10 +17,11 @@ const nodemailer = require("nodemailer");
 ////////////////////////////////////////////////
 
 // get json files that contains data to populate db
-let peopleList = require("./other/peopledata.json");
+let eventsList = require("./other/eventsdata.json");
 let locationsList = require("./other/locationsdata.json");
+let peopleList = require("./other/peopledata.json");
 let servicesList = require("./other/servicesdata.json");
-let servicesLocationsList = require("./other/serviceslocationsdata.json");
+//let servicesLocationsList = require("./other/serviceslocationsdata.json");
 let whoweareInfo = require("./other/whowearedata.json");
 
 // use it until testing
@@ -56,47 +57,34 @@ function initSqlDB() {
     }
 }
 
-
-function initPeopleTable() {
-    return sqlDb.schema.hasTable("people").then(exists => {
+function initEventsTable() {
+    return sqlDb.schema.hasTable("events").then(exists => {
         if (!exists) {
-            sqlDb.schema.createTable("people", table => {
+            sqlDb.schema.createTable("events", table => {
                 // create the table
                 table.increments("id").primary();
                 table.string("name");
-                table.string("surname");
+                table.text("description");
                 table.integer("locationId");
-                table.text("basicInfo");
-                table.integer("serviceId");
-                table.boolean("isResponsible");
-                table.boolean("isResponsibleArea");
             })
             .then(() => {
-                return Promise.all(
-                    _.map(peopleList, p => {
-                        // insert the row
-                        // delete p.basicInfo;
-                        return sqlDb("people").insert(p).catch(function(err) {
-                            console.log("ERROR WHILE FILLING PEOPLE");
-                            console.log(err);
-                            // console.log(err);
-                        });
-                    })
-                );
-            });
-        } else {
-            return true;
-        }
+                  return Promise.all(
+                      _.map(EventsList, p => {
+                          // insert the row
+                          return sqlDb("events").insert(p);
+                      })
+                  );
+              });
+      } else {
+          return true;
+      }
     });
 }
-
-
 
 function initLocationsTable() {
     return sqlDb.schema.hasTable("locations").then(exists => {
         if (!exists) {
-            sqlDb.schema
-                .createTable("locations", table => {
+            sqlDb.schema.createTable("locations", table => {
                     // create the table
                     table.increments("id").primary();
                     table.string("name");
@@ -117,22 +105,33 @@ function initLocationsTable() {
     });
 }
 
-function initWhoWeAreTable() {
-    return sqlDb.schema.hasTable("whoweare").then(exists => {
+function initPeopleTable() {
+    return sqlDb.schema.hasTable("people").then(exists => {
         if (!exists) {
-            sqlDb.schema
-                .createTable("whoweare", table => {
-                    // create the table
-                    table.text("info");
-                })
-                .then(() => {
-                    return Promise.all(
-                        _.map(whoweareInfo, p => {
-                            // insert the row
-                            return sqlDb("whoweare").insert(p);
-                        })
-                    );
-                });
+            sqlDb.schema.createTable("people", table => {
+                // create the table
+                table.increments("id").primary();
+                table.string("name");
+                table.string("surname");
+                table.integer("serviceId");
+                table.string("role");
+                table.text("basicInfo");
+                table.string("email");
+                //table.integer("locationId");
+            })
+            .then(() => {
+                return Promise.all(
+                    _.map(peopleList, p => {
+                        // insert the row
+                        // delete p.basicInfo;
+                        return sqlDb("people").insert(p).catch(function(err) {
+                            console.log("ERROR WHILE FILLING PEOPLE");
+                            console.log(err);
+                            // console.log(err);
+                        });
+                    })
+                );
+            });
         } else {
             return true;
         }
@@ -148,7 +147,8 @@ function initServicesTable() {
                     table.increments("id").primary();
                     table.string("name");
                     table.text("description");
-                    table.text("treatment");
+                    table.string("contacts");
+                    table.integer("locationId");
                 })
                 .then(() => {
                     return Promise.all(
@@ -164,6 +164,7 @@ function initServicesTable() {
     });
 }
 
+/*
 function initServicesLocationsTable() {
     return sqlDb.schema.hasTable("servicesLocations").then(exists => {
         if (!exists) {
@@ -187,15 +188,39 @@ function initServicesLocationsTable() {
         }
     });
 }
+*/
+
+function initWhoWeAreTable() {
+    return sqlDb.schema.hasTable("whoweare").then(exists => {
+        if (!exists) {
+            sqlDb.schema
+                .createTable("whoweare", table => {
+                    // create the table
+                    table.text("info");
+                })
+                .then(() => {
+                    return Promise.all(
+                        _.map(whoweareInfo, p => {
+                            // insert the row
+                            return sqlDb("whoweare").insert(p);
+                        })
+                    );
+                });
+        } else {
+            return true;
+        }
+    });
+}
 
 
 // for each table required, check if already existing
 // if not, create and populate
 function initDb() {
-    initPeopleTable();
+    initEventsTable();
     initLocationsTable();
+    initPeopleTable();
     initServicesTable();
-    initServicesLocationsTable();
+    //initServicesLocationsTable();
     initWhoWeAreTable();
 
     return true;
@@ -219,10 +244,11 @@ app.use(bodyParser.urlencoded({extended: true, inflate: true}));
 
 
 // Name of the tables are:
-// doctors
+// events
 // locations
+// people
 // services
-// servicesLocations
+//// servicesLocations
 // whoweare
 
 
@@ -236,7 +262,17 @@ app.get("/whoweare", function(req, res) {
         })
 })
 
-// retrieve data about all the doctors
+// retrieve data about all services
+// result returned as JSON array
+app.get("/services", function(req,res) {
+  let myQuery = sqlDb("services")
+        .then(result => {
+          res.send(JSON.stringify(result));
+        })
+})
+
+
+// retrieve data about all people
 // result returned as a JSON array
 app.get("/people", function(req, res) {
     let myQuery = sqlDb("people").orderByRaw('surname, name')
@@ -254,7 +290,15 @@ app.get("/locations", function(req, res) {
         })
 })
 
-// given a doctor id, retrieve all data about that doctor
+//retrieve data about all events
+//result returned as a JSON array
+app.get("/events", function(req, res) {
+        .then(result => {
+          res.send(JSON.stringify(result));
+        })
+})
+
+// given a person id, retrieve all data about that person
 // result returned as a JSON array with a single element
 app.get("/people/:id", function(req, res) {
     let myQuery = sqlDb("people");
@@ -285,7 +329,7 @@ app.get("/locations/:id", function(req, res) {
 })
 
 //NOT RESTFUL
-// given a service id, retrieve data of the doctors working in it
+// given a service id, retrieve data of people working in it
 // result returned as a JSON array
 app.get("/peoplebyservice/:id", function(req, res) {
     let myQuery = sqlDb("people");
@@ -296,7 +340,7 @@ app.get("/peoplebyservice/:id", function(req, res) {
 })
 
 //MAYBE RESTFUL
-// given a service id, retrieve data of the doctors working in it
+// given a service id, retrieve data of people working in it
 // result returned as a JSON array
 app.get("/services/:id/people", function(req, res) {
     let myQuery = sqlDb("people");
@@ -310,9 +354,8 @@ app.get("/services/:id/people", function(req, res) {
 // given a location id, retrieve data of the services located in that location
 // result returned as a JSON array
 app.get("/servicesbylocation/:id", function(req, res) {
-    let myQuery = sqlDb.select().from("services").whereIn("id", function() {
-            this.select("serviceId").from("servicesLocations").where("locationId", req.params.id);
-        })
+    let myQuery = sqlDb("services");
+    myQuery.select().where("locationId", req.params.id)
         .then(result => {
             res.send(JSON.stringify(result));
         })
@@ -322,14 +365,14 @@ app.get("/servicesbylocation/:id", function(req, res) {
 // given a location id, retrieve data of the services located in that location
 // result returned as a JSON array
 app.get("/locations/:id/services", function(req, res) {
-    let myQuery = sqlDb.select().from("services").whereIn("id", function() {
-            this.select("serviceId").from("servicesLocations").where("locationId", req.params.id);
-        })
+    let myQuery = sqlDb("services");
+    myQuery.select().where("locationId", req.params.id)
         .then(result => {
             res.send(JSON.stringify(result));
         })
 })
 
+/*
 //NOT RESTFUL
 // given a service id, retrieve data of the locations in which that service exists
 // result returned as a JSON array
@@ -353,6 +396,7 @@ app.get("/services/:id/locations", function(req, res) {
             res.send(JSON.stringify(result));
         })
 })
+*/
 
 /////////////////////////////////////////////
 ///////////////// APP.POST //////////////////
