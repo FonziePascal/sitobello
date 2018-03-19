@@ -1,4 +1,4 @@
-# Logs 
+# Logs
 # Logs
 logs
 *.log
@@ -55,8 +55,6 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# Photoshop file
-.psd
 
 # dotenv environment variables file
 
