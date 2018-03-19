@@ -65,6 +65,7 @@ function initEventsTable() {
                 table.increments("id").primary();
                 table.string("name");
                 table.text("description");
+                table.date("date");
                 table.integer("locationId");
             })
             .then(() => {
@@ -293,6 +294,7 @@ app.get("/locations", function(req, res) {
 //retrieve data about all events
 //result returned as a JSON array
 app.get("/events", function(req, res) {
+    let myQuery = splDb("events").orderBy('date')
         .then(result => {
           res.send(JSON.stringify(result));
         })
