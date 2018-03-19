@@ -2,92 +2,25 @@
   {
     "name": "Matteo",
     "surname": "Sinico",
-    "locationId": 3,
-    "basicInfo": "Il Prof. Sinico ha conseguito la Laurea in Medicina e Chirurgia con il massimo dei voti e la lode presso l'Università degli Studi di Firenze e si è specializzato in Ortopedia e Traumatologia presso lo stesso Ateneo. Durante la sua carriera ha avuto modo di lavorare in diverse Strutture: presso il C.T.O. (Centro Traumatologico Ortopedico) di Firenze; presso la Clinica Ortopedica dell’Università dove è stato allievo prediletto del Professor Piero Dini - Docente di Chirurgia Ortopedica - e successivamente ha assunto il ruolo di Direttore della Prima Clinica Ortopedica e della Scuola di Specializzazione. Il Prof. Colao è stato Medico Interno presso il Professor Viladot a Barcellona e presso il Professor Bousquet a Marsiglia. Ha svolto una Fellowship al New York Memorial For Special Surgery.",
     "serviceId": 3,
-    "isResponsible": 1,
-    "isResponsibleArea": 0
+    "role": "educatore",
+    "basicInfo": "Il Prof. Sinico ha conseguito la Laurea in Medicina.",
+    "email": ""
   },
   {
-    "name": "Emanuele",
-    "surname": "Voltolini",
-    "locationId": 2,
-    "basicInfo": "Emanuele Voltolini ha iniziato il suo percorso frequentando la Scuola di Terapista della riabilitazione e conseguendo il Diploma nel 1998. Successivamente ha intrapreso la formazione in medicina osteopatica, ottenendo il Diploma nel 2004 presso l'AIOT di Pescara, presentando una tesi sul trattamento osteopatico dello strabismo. Negli anni seguenti ha quindi frequentato numerosi Corsi di approfondimento in ambito osteopatico anche all'estero (Stati Uniti, Francia, Belgio), arricchendo notevolmente le sue conoscenze. Durante tale percorso ha compreso che la migliore tecnica terapeutica è il lavoro su di sé, e quindi ha affiancato ai corsi di formazione professionale dei corsi di crescita personale.",
-    "serviceId": 2,
-    "isResponsible": 0,
-    "isResponsibleArea": 0
+    "name": "",
+    "surname": "",
+    "serviceId": ,
+    "role": "",
+    "basicInfo": "",
+    "email": ""
   },
   {
-    "name": "Andrea",
-    "surname": "Taglia",
-    "locationId": 2,
-    "basicInfo": "Il dottor Andrea Taglia si è laureato nel 1988 in Medicina e Chirurgia presso l'Università degli Studi di Roma La Sapienza, successivamente nel 1992 presso il medesimo Ateneo consegue la specializzazione in Radiodiagnostica e Scienza delle Immagini.",
-    "serviceId": 5,
-    "isResponsible": 1,
-    "isResponsibleArea": 1
-  },
-  {
-    "name": "Giovanni",
-    "surname": "Beri",
-    "locationId": 3,
-    "basicInfo": "Il Dott. Beri si è laureato in Medicina e Chirurgia nel 1994 presso l'Università degli Studi di Perugia e ha conseguito la Specializzazione in Neurochirurgia nel 1999 presso l'Università degli Studi di Bari e in Neurologia nel 2014 presso lo stesso Ateneo; attualmente il Dott. Pizzoni esercita la sua attività in libera professione intamoenia presso l'Ospedale Belcolle di Viterbo ed effettua visite a domicilio in tutto il territorio laziale.",
-    "serviceId": 3,
-    "isResponsible": 0,
-    "isResponsibleArea": 1
-  },
-  {
-    "name": "Enrica",
-    "surname": "Pittini",
-    "locationId": 1,
-    "basicInfo": "La dottoressa Pittini si è laureata in Medicina e Chirurgia a Novara e si è specializzato in Medicina Fisica e Riabilitativa con Lode presso l’Università degli Studi di Genova. Ha dedicato gran parte del suo percorso di studi e lavorativo alla Medicina Riabilitativa del dolore muscolo scheletrico. Ha partecipato al Master di II livello in tecniche manuali, posturali e infiltrative per la Riabilitazione presso l’Università di Roma La sapienza. Esegue numerosi trattamenti infiltrativi ecoguidati a livello della spalla, gomito, anca, ginocchio,caviglia, nella patologia tendinea cronica e acuta come la tendinopatia del tendine rotuleo, tendine di Achille e molte altre patologie. Ha partecipato anche al Master di II livello per l’Ossigeno-Ozonoterapia presso l’Università degli Studi di Pavia.",
-    "serviceId": 4,
-    "isResponsible": 1,
-    "isResponsibleArea": 1
-  },
-  {
-    "name": "Pietro",
-    "surname": "Grotti",
-    "locationId": 1,
-    "basicInfo": "Il Prof. Grotti si è laureato nel 1969 in Medicina e Chirurgia presso l'Università Alma Mater Studiorum di Bologna. Presso il medesimo ateneo ha poi conseguito nel 1974 la Specializzazione in Chirurgia Generale, nel 1976 la Specializzazione in Chirurgia Vascolare e nel 1978 quella in Chirurgia Toracica. Dal 1970 è Assistente di Clinica Chirurgica presso l'Università di Bologna e dal 1980 presso il medesimo ateneo è Professore di Chirurgia Generale con attività chirurgica presso il Policlinico S.Orsola di Bologna. Dal 1992 è Direttore della Chirurgia generale dell'Ospedale Bellaria di Bologna e dal 2003 della Chirurgia Generale ad indirizzo Gastroenterologico e Laparoscopico dell'Ospedale Maggiore di Bologna.",
-    "serviceId": 2,
-    "isResponsible": 1,
-    "isResponsibleArea": 0
-  },
-  {
-    "name": "Biagio",
-    "surname": "Festa",
-    "locationId": 2,
-    "basicInfo": "Il dott. Festa si è laureato in Medicina e Chirurgia nel 1980 presso l'Università degli Studi di Padova e si è successivamente specializzato in Anatomia patologica nel 1984 (a Parma) ed in Oncologia nel 1987 (a Modena). Si è inoltre perfezionato presso la NSI di Amsterdam nell'uso operativo del sistema computerizzato di screening cervico-vaginale PAP-NET. Dal 1981 al 1998 ha lavorato come Assistente e poi Aiuto Corresponsabile presso il Servizio di Anatomia Patologica dell'Ospedale Maggiore di Verona, all'interno del quale ha ricoperto l'incarico di Responsabile operativo del settore di Citodiagnostica. Attualmente è proprietario e direttore responsabile del suo Laboratorio di Cito-Istopatologia, situato a Verona, e svolge attività di Consulente presso diverse strutture private.",
-    "serviceId": 1,
-    "isResponsible": 0,
-    "isResponsibleArea": 0
-  },
-  {
-    "name": "Giovanni",
-    "surname": "Zuretti",
-    "locationId": 1,
-    "basicInfo": "Il dottor Zuretti è Osteopata e Fisioterapista specializzato in Riabilitazione Funzionale e Disfunzioni del Movimento. Nel 2008 consegue con Lode la Laurea in Fisioterapia presso l'Università Cattolica del Sacro Cuore A.Gemelli di Roma.Nel 2013 consegue anche la Laurea in Osteopatia presso la European School of Osteopathy di Maidstone nel Regno Unito dopo aver frequentato un corso universitario FULL-TIME della durata di 4 anni.Successivamente frequenta numerosi corsi di specializzazione sopratutto in ambito di Riabilitazione Funzionale e Disfunzioni del Movimento in diversi paesi Europei e in particolare nella Repubblica Ceca presso la Prague School of Rehabilitation dove sta conseguendo la Certificazione internazionale in Dynamic Neuromuscular Stabilization (DNS).",
-    "serviceId": 1,
-    "isResponsible": 1,
-    "isResponsibleArea": 0
-  },
-  {
-    "name": "Franco",
-    "surname": "De Gigio",
-    "locationId": 3,
-    "basicInfo": "Il Dottor De Gigio ha conseguito nell’anno 2014 il diploma di osteopatia D.O. presso il centro di osteopatia C.E.R.D.O. Centre pour l’étude la recherche et la diffusion ostéopathie; scuola riconosciuta da R.O.I.(registro osteopati italiani). Da anni collabora con la dottoressa Paola Ollandini presso lo studio medico Ollandini dove si interfaccia con vari specialisti nel settore medico.Durante la sua formazione ha effettuato tirocini presso numerose strutture sanitarie quali la Provincia Religiosa di San Pietro dell’ordine Ospedaliero di San Giovanni di Dio Fatebenefratelli, Via Cassia 603, Roma e il prestigioso centro riabilitativo Fondazione Santa Lucia Via Ardeatina 306, Roma; dove è potuto entrare in contatto con realtà di ambito patologico di vario tipo.",
-    "serviceId": 2,
-    "isResponsible": 0,
-    "isResponsibleArea": 0
-  },
-  {
-    "name": "Gregorio",
-    "surname": "Casa",
-    "locationId": 3,
-    "basicInfo": "Gregorio Casa possiede la laurea di dottore in medicina con due specializzazioni: infettivologia e nefrologia. Studiò all'Università Johns Hopkins, sotto Brightman e Gilmar. Studente brillante ed ormai laureato, era candidato a vincere il Doyle internship che gli avrebbe consentito l'internato alla Mayo Clinic, quando venne cacciato per avere copiato un test (tra l'altro errato) da un suo compagno spione, futuro Dr. Phillip Weber, che lui tuttora schernisce con l'appellativo von Lieberman. A seguito dell'espulsione, per conseguire il dottorato si trasferì all'Università del Michigan, dove conobbe Lisa Cuddy, la quale già conosceva la fama di leggenda di cui godeva nel campus. Weber vinse il Doyle. House dichiara di avere anche una laurea in fisica teorica e che insegnò all'università per un certo periodo.",
-    "serviceId": 1,
-    "isResponsible": 0,
-    "isResponsibleArea": 1
+    "name": "",
+    "surname": "",
+    "serviceId": ,
+    "role": "",
+    "basicInfo": "",
+    "email": ""
   }
 ]
-
