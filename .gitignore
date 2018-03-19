@@ -1,4 +1,5 @@
 # Logs 
+# Logs
 logs
 *.log
 npm-debug.log*
@@ -53,6 +54,9 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
+
+# Photoshop file
+.psd
 
 # dotenv environment variables file
 
