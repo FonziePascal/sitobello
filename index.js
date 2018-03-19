@@ -41,7 +41,7 @@ function initSqlDB() {
             debug: true,
             client: "sqlite3",
             connection: {
-                filename: "./other/clinicdb.sqlite"
+                filename: "./other/associationdb.sqlite"
             }
         });
         // actual version of the db
@@ -60,31 +60,30 @@ function initSqlDB() {
 function initPeopleTable() {
     return sqlDb.schema.hasTable("people").then(exists => {
         if (!exists) {
-            sqlDb.schema
-                .createTable("people", table => {
-                    // create the table
-                    table.increments("id").primary();
-                    table.string("name");
-                    table.string("surname");
-                    table.integer("locationId");
-                    table.text("basicInfo");
-                    table.integer("serviceId");
-                    table.boolean("isResponsible");
-                    table.boolean("isResponsibleArea");
-                })
-                .then(() => {
-                    return Promise.all(
-                        _.map(peopleList, p => {
-                            // insert the row
-                            // delete p.basicInfo;
-                            return sqlDb("people").insert(p).catch(function(err) {
-                                console.log("ERRORE MENTRE RIEMPIO PEOPLE");
-                                console.log(err);
-                                // console.log(err);
-                            });
-                        })
-                    );
-                });
+            sqlDb.schema.createTable("people", table => {
+                // create the table
+                table.increments("id").primary();
+                table.string("name");
+                table.string("surname");
+                table.integer("locationId");
+                table.text("basicInfo");
+                table.integer("serviceId");
+                table.boolean("isResponsible");
+                table.boolean("isResponsibleArea");
+            })
+            .then(() => {
+                return Promise.all(
+                    _.map(peopleList, p => {
+                        // insert the row
+                        // delete p.basicInfo;
+                        return sqlDb("people").insert(p).catch(function(err) {
+                            console.log("ERROR WHILE FILLING PEOPLE");
+                            console.log(err);
+                            // console.log(err);
+                        });
+                    })
+                );
+            });
         } else {
             return true;
         }
