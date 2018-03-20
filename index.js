@@ -69,18 +69,19 @@ function initEventsTable() {
                 table.integer("locationId");
             })
             .then(() => {
-                  return Promise.all(
-                      _.map(EventsList, p => {
-                          // insert the row
-                          return sqlDb("events").insert(p).catch(function(err) {
-                          console.log("ERROR WHILE FILLING EVENTS TABLE");
-                          console.log(err);
-                      })
-                  );
-              });
-      } else {
+                return Promise.all(
+                    _.map(EventsList, p => {
+                        // insert the row
+                        return sqlDb("events").insert(p).catch(function(err) {
+                            console.log("ERROR WHILE FILLING EVENTS TABLE");
+                            console.log(err);
+                        })
+                    })
+                );
+            });
+        } else {
           return true;
-      }
+        }
     });
 }
 
