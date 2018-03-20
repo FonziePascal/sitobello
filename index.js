@@ -21,7 +21,6 @@ let eventsList = require("./other/eventsdata.json");
 let locationsList = require("./other/locationsdata.json");
 let peopleList = require("./other/peopledata.json");
 let servicesList = require("./other/servicesdata.json");
-//let servicesLocationsList = require("./other/serviceslocationsdata.json");
 let whoweareInfo = require("./other/whowearedata.json");
 
 // use it until testing
@@ -80,7 +79,7 @@ function initEventsTable() {
                 );
             });
         } else {
-          return true;
+            return true;
         }
     });
 }
@@ -100,7 +99,7 @@ function initLocationsTable() {
                     _.map(locationsList, p => {
                         // insert the row
                         return sqlDb("locations").insert(p).catch( err => {
-                            console.log("ERROR WHILE FILLING LOCATIONS TALBE");
+                            console.log("ERROR WHILE FILLING LOCATIONS TABLE");
                             console.log(err);
                         })
                     })
@@ -131,7 +130,7 @@ function initPeopleTable() {
                         // insert the row
                         // delete p.basicInfo;
                         return sqlDb("people").insert(p).catch( err => {
-                            console.log("ERROR WHILE FILLING PEOPLE");
+                            console.log("ERROR WHILE FILLING PEOPLE TABLE");
                             console.log(err);
                         })
                     })
@@ -146,26 +145,25 @@ function initPeopleTable() {
 function initServicesTable() {
     return sqlDb.schema.hasTable("services").then(exists => {
         if (!exists) {
-            sqlDb.schema
-                .createTable("services", table => {
-                    // create the table
-                    table.increments("id").primary();
-                    table.string("name");
-                    table.text("description");
-                    table.string("contacts");
-                    table.integer("locationId");
-                })
-                .then(() => {
-                    return Promise.all(
-                        _.map(servicesList, p => {
-                            // insert the row
-                            return sqlDb("services").insert(p).catch( err => {
-                            console.log("ERROR WHILE FILLING LOCATIONS TALBE");
+            sqlDb.schema.createTable("services", table => {
+                // create the table
+                table.increments("id").primary();
+                table.string("name");
+                table.text("description");
+                table.string("contacts");
+                table.integer("locationId");
+            })
+            .then(() => {
+                return Promise.all(
+                    _.map(servicesList, p => {
+                        // insert the row
+                        return sqlDb("services").insert(p).catch( err => {
+                            console.log("ERROR WHILE FILLING SERVICES TABLE");
                             console.log(err);
-                            })
                         })
-                    );
-                });
+                    })
+                );
+            });
         } else {
             return true;
         }
@@ -175,22 +173,21 @@ function initServicesTable() {
 function initWhoWeAreTable() {
     return sqlDb.schema.hasTable("whoweare").then(exists => {
         if (!exists) {
-            sqlDb.schema
-                .createTable("whoweare", table => {
-                    // create the table
-                    table.text("info");
-                })
-                .then(() => {
-                    return Promise.all(
-                        _.map(whoweareInfo, p => {
-                            // insert the row
-                            return sqlDb("whoweare").insert(p)catch( err => {
-                                console.log("ERROR WHILE FILLING LOCATIONS TALBE");
-                                console.log(err);
-                            });
-                        })
-                    );
-                });
+            sqlDb.schema.createTable("whoweare", table => {
+                // create the table
+                table.text("info");
+            })
+            .then(() => {
+                return Promise.all(
+                    _.map(whoweareInfo, p => {
+                        // insert the row
+                        return sqlDb("whoweare").insert(p)catch( err => {
+                            console.log("ERROR WHILE FILLING WHOWEARE TALBE");
+                            console.log(err);
+                        });
+                    })
+                );
+            });
         } else {
             return true;
         }
@@ -205,7 +202,6 @@ function initDb() {
     initLocationsTable();
     initPeopleTable();
     initServicesTable();
-    //initServicesLocationsTable();
     initWhoWeAreTable();
 
     return true;
