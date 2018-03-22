@@ -17,10 +17,10 @@ const nodemailer = require("nodemailer");
 ////////////////////////////////////////////////
 
 // get json files that contains data to populate db
-let peopleList = require("./other/peopledata.json");
+let eventsList = require("./other/eventsdata.json");
 let locationsList = require("./other/locationsdata.json");
+let peopleList = require("./other/peopledata.json");
 let servicesList = require("./other/servicesdata.json");
-let servicesLocationsList = require("./other/serviceslocationsdata.json");
 let whoweareInfo = require("./other/whowearedata.json");
 
 // use it until testing
@@ -41,7 +41,7 @@ function initSqlDB() {
             debug: true,
             client: "sqlite3",
             connection: {
-                filename: "./other/clinicdb.sqlite"
+                filename: "./other/associationdb.sqlite"
             }
         });
         // actual version of the db
@@ -56,84 +56,86 @@ function initSqlDB() {
     }
 }
 
-
-function initPeopleTable() {
-    return sqlDb.schema.hasTable("people").then(exists => {
+function initEventsTable() {
+    return sqlDb.schema.hasTable("events").then(exists => {
         if (!exists) {
-            sqlDb.schema
-                .createTable("people", table => {
-                    // create the table
-                    table.increments("id").primary();
-                    table.string("name");
-                    table.string("surname");
-                    table.integer("locationId");
-                    table.text("basicInfo");
-                    table.integer("serviceId");
-                    table.boolean("isResponsible");
-                    table.boolean("isResponsibleArea");
-                })
-                .then(() => {
-                    return Promise.all(
-                        _.map(peopleList, p => {
-                            // insert the row
-                            // delete p.basicInfo;
-                            return sqlDb("people").insert(p).catch(function(err) {
-                                console.log("ERRORE MENTRE RIEMPIO PEOPLE");
-                                console.log(err);
-                                // console.log(err);
-                            });
+            sqlDb.schema.createTable("events", table => {
+                // create the table
+                table.increments("id").primary();
+                table.string("name");
+                table.text("description");
+                table.date("date");
+                table.integer("locationId");
+            })
+            .then(() => {
+                return Promise.all(
+                    _.map(EventsList, p => {
+                        // insert the row
+                        return sqlDb("events").insert(p).catch(function(err) {
+                            console.log("ERROR WHILE FILLING EVENTS TABLE");
+                            console.log(err);
                         })
-                    );
-                });
+                    })
+                );
+            });
         } else {
             return true;
         }
     });
 }
-
-
 
 function initLocationsTable() {
     return sqlDb.schema.hasTable("locations").then(exists => {
         if (!exists) {
-            sqlDb.schema
-                .createTable("locations", table => {
-                    // create the table
-                    table.increments("id").primary();
-                    table.string("name");
-                    table.text("basicInfo");
-                    table.string("contacts");
-                })
-                .then(() => {
-                    return Promise.all(
-                        _.map(locationsList, p => {
-                            // insert the row
-                            return sqlDb("locations").insert(p);
+            sqlDb.schema.createTable("locations", table => {
+                // create the table
+                table.increments("id").primary();
+                table.string("name");
+                table.text("basicInfo");
+                table.string("contacts");
+            })
+            .then(() => {
+                return Promise.all(
+                    _.map(locationsList, p => {
+                        // insert the row
+                        return sqlDb("locations").insert(p).catch( err => {
+                            console.log("ERROR WHILE FILLING LOCATIONS TABLE");
+                            console.log(err);
                         })
-                    );
-                });
+                    })
+                );
+            });
         } else {
             return true;
         }
     });
 }
 
-function initWhoWeAreTable() {
-    return sqlDb.schema.hasTable("whoweare").then(exists => {
+function initPeopleTable() {
+    return sqlDb.schema.hasTable("people").then(exists => {
         if (!exists) {
-            sqlDb.schema
-                .createTable("whoweare", table => {
-                    // create the table
-                    table.text("info");
-                })
-                .then(() => {
-                    return Promise.all(
-                        _.map(whoweareInfo, p => {
-                            // insert the row
-                            return sqlDb("whoweare").insert(p);
+            sqlDb.schema.createTable("people", table => {
+                // create the table
+                table.increments("id").primary();
+                table.string("name");
+                table.string("surname");
+                table.integer("serviceId");
+                table.string("role");
+                table.text("basicInfo");
+                table.string("email");
+            })
+            .then(() => {
+                return Promise.all(
+                    _.map(peopleList, p => {
+                        // insert the row
+                        // delete p.basicInfo;
+                        return sqlDb("people").insert(p).catch( err => {
+                            console.log("ERROR WHILE FILLING PEOPLE TABLE");
+                            console.log(err);
                         })
-                    );
-                });
+                    })
+                );
+            });
         } else {
             return true;
         }
@@ -143,46 +145,49 @@ function initWhoWeAreTable() {
 function initServicesTable() {
     return sqlDb.schema.hasTable("services").then(exists => {
         if (!exists) {
-            sqlDb.schema
-                .createTable("services", table => {
-                    // create the table
-                    table.increments("id").primary();
-                    table.string("name");
-                    table.text("description");
-                    table.text("treatment");
-                })
-                .then(() => {
-                    return Promise.all(
-                        _.map(servicesList, p => {
-                            // insert the row
-                            return sqlDb("services").insert(p);
+            sqlDb.schema.createTable("services", table => {
+                // create the table
+                table.increments("id").primary();
+                table.string("name");
+                table.text("description");
+                table.string("contacts");
+                table.integer("locationId");
+            })
+            .then(() => {
+                return Promise.all(
+                    _.map(servicesList, p => {
+                        // insert the row
+                        return sqlDb("services").insert(p).catch( err => {
+                            console.log("ERROR WHILE FILLING SERVICES TABLE");
+                            console.log(err);
                         })
-                    );
-                });
+                    })
+                );
+            });
         } else {
             return true;
         }
     });
 }
 
-function initServicesLocationsTable() {
-    return sqlDb.schema.hasTable("servicesLocations").then(exists => {
+function initWhoWeAreTable() {
+    return sqlDb.schema.hasTable("whoweare").then(exists => {
         if (!exists) {
-            sqlDb.schema
-                .createTable("servicesLocations", table => {
-                    // create the table
-                    table.integer("serviceId");
-                    table.integer("locationId");
-                    table.primary(["serviceId", "locationId"]);
-                })
-                .then(() => {
-                    return Promise.all(
-                        _.map(servicesLocationsList, p => {
-                            // insert the row
-                            return sqlDb("servicesLocations").insert(p);
-                        })
-                    );
-                });
+            sqlDb.schema.createTable("whoweare", table => {
+                // create the table
+                table.text("info");
+            })
+            .then(() => {
+                return Promise.all(
+                    _.map(whoweareInfo, p => {
+                        // insert the row
+                        return sqlDb("whoweare").insert(p)catch( err => {
+                            console.log("ERROR WHILE FILLING WHOWEARE TALBE");
+                            console.log(err);
+                        });
+                    })
+                );
+            });
         } else {
             return true;
         }
@@ -193,10 +198,10 @@ function initServicesLocationsTable() {
 // for each table required, check if already existing
 // if not, create and populate
 function initDb() {
-    initPeopleTable();
+    initEventsTable();
     initLocationsTable();
+    initPeopleTable();
     initServicesTable();
-    initServicesLocationsTable();
     initWhoWeAreTable();
 
     return true;
@@ -220,140 +225,122 @@ app.use(bodyParser.urlencoded({extended: true, inflate: true}));
 
 
 // Name of the tables are:
-// doctors
+// events
 // locations
+// people
 // services
-// servicesLocations
+//// servicesLocations
 // whoweare
 
 
 // retrieve "who we are" data
 // result returned as a JSON array with a single element
-app.get("/whoweare", function(req, res) {
+app.get("/whoweare", function(request, response) {
     // retrieve the whole table, because it contains only 1 entry
     let myQuery = sqlDb("whoweare")
         .then(result => {
-            res.send(JSON.stringify(result));
+            response.send(JSON.stringify(result));
         })
 })
 
-// retrieve data about all the doctors
+// retrieve data about all services
+// result returned as JSON array
+app.get("/services", function(request,response) {
+    let myQuery = sqlDb("services")
+        .then(result => {
+            response.send(JSON.stringify(result));
+        })
+})
+
+
+// retrieve data about all people
 // result returned as a JSON array
-app.get("/people", function(req, res) {
+app.get("/people", function(request, response) {
     let myQuery = sqlDb("people").orderByRaw('surname, name')
         .then(result => {
-            res.send(JSON.stringify(result));
+            response.send(JSON.stringify(result));
         })
 })
 
 // retrieve data about all the locations
 // result returned as a JSON array
-app.get("/locations", function(req, res) {
+app.get("/locations", function(request, response) {
     let myQuery = sqlDb("locations")
         .then(result => {
-            res.send(JSON.stringify(result));
+            response.send(JSON.stringify(result));
         })
 })
 
-// given a doctor id, retrieve all data about that doctor
-// result returned as a JSON array with a single element
-app.get("/people/:id", function(req, res) {
-    let myQuery = sqlDb("people");
-    myQuery.where("id", req.params.id)
+//retrieve data about all events
+//result returned as a JSON array
+app.get("/events", function(request, response) {
+    let myQuery = splDb("events").orderBy('date')
         .then(result => {
-            res.send(JSON.stringify(result));
+          response.send(JSON.stringify(result));
+        })
+})
+
+// given a person id, retrieve all data about that person
+// result returned as a JSON array with a single element
+app.get("/people/:id", function(request, response) {
+    let myQuery = sqlDb("people");
+    myQuery.where("id", request.params.id)
+        .then(result => {
+            response.send(JSON.stringify(result));
         })
 })
 
 // given a service id, retrieve all data about that service
 // result returned as a JSON array with a single element
-app.get("/services/:id", function(req, res) {
+app.get("/services/:id", function(request, response) {
     let myQuery = sqlDb("services");
-    myQuery.where("id", req.params.id)
+    myQuery.where("id", request.params.id)
         .then(result => {
-            res.send(JSON.stringify(result));
+            response.send(JSON.stringify(result));
         })
 })
 
 // given a location id, retrieve all data about that location
 // result returned as a JSON array with a single element
-app.get("/locations/:id", function(req, res) {
+app.get("/locations/:id", function(request, response) {
     let myQuery = sqlDb("locations");
-    myQuery.where("id", req.params.id)
+    myQuery.where("id", request.params.id)
         .then(result => {
-            res.send(JSON.stringify(result));
+            response.send(JSON.stringify(result));
         })
 })
 
-//NOT RESTFUL
-// given a service id, retrieve data of the doctors working in it
+// given a service id, retrieve data of people working in it
 // result returned as a JSON array
-app.get("/peoplebyservice/:id", function(req, res) {
+app.get("/services/:id/people", function(request, response) {
     let myQuery = sqlDb("people");
-    myQuery.select().where("serviceId", req.params.id)
+    myQuery.select().where("serviceId", request.params.id)
         .then(result => {
-            res.send(JSON.stringify(result));
+            response.send(JSON.stringify(result));
         })
 })
 
-//MAYBE RESTFUL
-// given a service id, retrieve data of the doctors working in it
-// result returned as a JSON array
-app.get("/services/:id/people", function(req, res) {
-    let myQuery = sqlDb("people");
-    myQuery.select().where("serviceId", req.params.id)
-        .then(result => {
-            res.send(JSON.stringify(result));
-        })
-})
-
-//NOT RESTFUL
 // given a location id, retrieve data of the services located in that location
 // result returned as a JSON array
-app.get("/servicesbylocation/:id", function(req, res) {
-    let myQuery = sqlDb.select().from("services").whereIn("id", function() {
-            this.select("serviceId").from("servicesLocations").where("locationId", req.params.id);
-        })
+app.get("/locations/:id/services", function(request, response) {
+    let myQuery = sqlDb("services");
+    myQuery.select().where("locationId", request.params.id)
         .then(result => {
-            res.send(JSON.stringify(result));
+            response.send(JSON.stringify(result));
         })
 })
 
-//MAYBE RESTFUL
-// given a location id, retrieve data of the services located in that location
-// result returned as a JSON array
-app.get("/locations/:id/services", function(req, res) {
-    let myQuery = sqlDb.select().from("services").whereIn("id", function() {
-            this.select("serviceId").from("servicesLocations").where("locationId", req.params.id);
-        })
-        .then(result => {
-            res.send(JSON.stringify(result));
-        })
-})
-
-//NOT RESTFUL
 // given a service id, retrieve data of the locations in which that service exists
 // result returned as a JSON array
-app.get("/locationsbyservice/:id", function(req, res) {
+app.get("/services/:id/locations", function(request, response) {
     let myQuery = sqlDb.select().from("locations").whereIn("id", function() {
-            this.select("locationId").from("servicesLocations").where("serviceId", req.params.id);
+            this.select("locationId").from("servicesLocations").where("serviceId", request.params.id);
         })
         .then(result => {
-            res.send(JSON.stringify(result));
+            response.send(JSON.stringify(result));
         })
 })
 
-//MAYBE RESTFUL
-// given a service id, retrieve data of the locations in which that service exists
-// result returned as a JSON array
-app.get("/services/:id/locations", function(req, res) {
-    let myQuery = sqlDb.select().from("locations").whereIn("id", function() {
-            this.select("locationId").from("servicesLocations").where("serviceId", req.params.id);
-        })
-        .then(result => {
-            res.send(JSON.stringify(result));
-        })
-})
 
 /////////////////////////////////////////////
 ///////////////// APP.POST //////////////////
@@ -372,7 +359,7 @@ app.get("/services/:id/locations", function(req, res) {
  *
  *      an email will be sent to the writer's mail
  */
-app.post('/contactForm', function(req, res) {
+app.post('/contactForm', function(request, response) {
 
     var smtpConfig = {
         host: 'smtp.gmail.com',
@@ -387,10 +374,10 @@ app.post('/contactForm', function(req, res) {
 
     // setup e-mail data with unicode symbols
     var mailOptions = {
-        from: '"' + req.body.name + '" <cooperativaandy@gmail.com>', // sender address
-        to: req.body.mail, // list of receivers
-        subject: req.body.subject, // Subject line
-        html: '<p>Message: ' + req.body.message + '</p>' // html body
+        from: '"' + request.body.name + '" <cooperativaandy@gmail.com>', // sender address
+        to: request.body.mail, // list of receivers
+        subject: request.body.subject, // Subject line
+        html: '<p>Message: ' + request.body.message + '</p>' // html body
     };
 
     // send mail with defined transport object
@@ -401,8 +388,8 @@ app.post('/contactForm', function(req, res) {
         console.log('Message sent: ' + info.response);
     });
 
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end('thanks');
+    response.writeHead(200, { 'Content-Type': 'text/html' });
+    response.end('thanks');
 });
 
 

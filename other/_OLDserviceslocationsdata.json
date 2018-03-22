@@ -1,0 +1,38 @@
+[
+  {
+    "serviceId": 1,
+    "locationId": 1
+  },
+  {
+    "serviceId": 1,
+    "locationId": 2
+  },
+  {
+    "serviceId": 1,
+    "locationId": 3
+  },
+  {
+    "serviceId": 2,
+    "locationId": 1 
+  },
+  {
+    "serviceId": 2,
+    "locationId": 2
+  },
+  {
+    "serviceId": 2,
+    "locationId": 3
+  },
+  {
+    "serviceId": 3,
+    "locationId": 3
+  },
+  {
+    "serviceId": 4,
+    "locationId": 1
+  },
+  {
+    "serviceId": 5,
+    "locationId": 2
+  }
+]
