@@ -69,7 +69,7 @@ function initEventsTable() {
             })
             .then(() => {
                 return Promise.all(
-                    _.map(EventsList, p => {
+                    _.map(eventsList, p => {
                         // insert the row
                         return sqlDb("events").insert(p).catch(function(err) {
                             console.log("ERROR WHILE FILLING EVENTS TABLE");
@@ -181,7 +181,7 @@ function initWhoWeAreTable() {
                 return Promise.all(
                     _.map(whoweareInfo, p => {
                         // insert the row
-                        return sqlDb("whoweare").insert(p)catch( err => {
+                        return sqlDb("whoweare").insert(p).catch( err => {
                             console.log("ERROR WHILE FILLING WHOWEARE TALBE");
                             console.log(err);
                         });
