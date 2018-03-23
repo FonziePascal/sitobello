@@ -1,5 +1,4 @@
 # Logs
-# Logs
 logs
 *.log
 npm-debug.log*
@@ -63,6 +62,9 @@ typings/
 
 # database
 other/clinicdb.sqlite
+
+# tags
+.tags1
 
 package-lock.json
 =======
