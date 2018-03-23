@@ -1,7 +1,4 @@
-/////////////////////////////////////////////
-////////////////// REQUIRES /////////////////
-/////////////////////////////////////////////
-
+// IMPORT
 
 const express = require("express");
 const app = express();
@@ -12,9 +9,12 @@ const process = require("process");
 const nodemailer = require("nodemailer");
 
 
-////////////////////////////////////////////////
-////////////////// INIT DB /////////////////////
-////////////////////////////////////////////////
+// SET TEST VARIABLE
+// Locally we should launch the app with TEST=true to use SQLlite
+// on Heroku TEST is default at false, so PostGres is used
+process.env.TEST = true;
+
+//DATABASE INITIALIZATION FUNCTIONS
 
 // get json files that contains data to populate db
 let eventsList = require("./other/eventsdata.json");
@@ -23,16 +23,8 @@ let peopleList = require("./other/peopledata.json");
 let servicesList = require("./other/servicesdata.json");
 let whoweareInfo = require("./other/whowearedata.json");
 
-// use it until testing
-process.env.TEST = true;
-
 let sqlDb;
 
-/////////////////////////////////////////////////////
-
-
-// Locally we should launch the app with TEST=true to use SQLlite
-// on Heroku TEST is default at false, so PostGres is used
 function initSqlDB() {
     // if I'm testing the application
     if (process.env.TEST) {
@@ -44,7 +36,7 @@ function initSqlDB() {
                 filename: "./other/associationdb.sqlite"
             }
         });
-        // actual version of the db
+    // Nontestisng
     } else {
         console.log("non-test mode");
         sqlDb = sqlDbFactory({
@@ -58,9 +50,9 @@ function initSqlDB() {
 
 function initEventsTable() {
     return sqlDb.schema.hasTable("events").then(exists => {
+        // if doesn't exists, create the table
         if (!exists) {
             sqlDb.schema.createTable("events", table => {
-                // create the table
                 table.increments("id").primary();
                 table.string("name");
                 table.text("description");
@@ -78,6 +70,7 @@ function initEventsTable() {
                     })
                 );
             });
+        //If a table is existing, use that table whitout ricreating it
         } else {
             return true;
         }
@@ -86,9 +79,9 @@ function initEventsTable() {
 
 function initLocationsTable() {
     return sqlDb.schema.hasTable("locations").then(exists => {
+        // if doesn't exists, create the table
         if (!exists) {
             sqlDb.schema.createTable("locations", table => {
-                // create the table
                 table.increments("id").primary();
                 table.string("name");
                 table.text("basicInfo");
@@ -105,6 +98,7 @@ function initLocationsTable() {
                     })
                 );
             });
+        //If a table is existing, use that table whitout ricreating it
         } else {
             return true;
         }
@@ -113,9 +107,9 @@ function initLocationsTable() {
 
 function initPeopleTable() {
     return sqlDb.schema.hasTable("people").then(exists => {
+        // if doesn't exists, create the table
         if (!exists) {
             sqlDb.schema.createTable("people", table => {
-                // create the table
                 table.increments("id").primary();
                 table.string("name");
                 table.string("surname");
@@ -136,6 +130,7 @@ function initPeopleTable() {
                     })
                 );
             });
+        //If a table is existing, use that table whitout ricreating it
         } else {
             return true;
         }
@@ -144,9 +139,9 @@ function initPeopleTable() {
 
 function initServicesTable() {
     return sqlDb.schema.hasTable("services").then(exists => {
+        // if doesn't exists, create the table
         if (!exists) {
             sqlDb.schema.createTable("services", table => {
-                // create the table
                 table.increments("id").primary();
                 table.string("name");
                 table.text("description");
@@ -164,6 +159,7 @@ function initServicesTable() {
                     })
                 );
             });
+        //If a table is existing, use that table whitout ricreating it
         } else {
             return true;
         }
@@ -172,9 +168,9 @@ function initServicesTable() {
 
 function initWhoWeAreTable() {
     return sqlDb.schema.hasTable("whoweare").then(exists => {
+        // if doesn't exists, create the table
         if (!exists) {
             sqlDb.schema.createTable("whoweare", table => {
-                // create the table
                 table.text("info");
             })
             .then(() => {
@@ -188,6 +184,7 @@ function initWhoWeAreTable() {
                     })
                 );
             });
+        //If a table is existing, use that table whitout ricreating it
         } else {
             return true;
         }
@@ -195,8 +192,7 @@ function initWhoWeAreTable() {
 }
 
 
-// for each table required, check if already existing
-// if not, create and populate
+// for every table required, check if existing. If not create and populate
 function initDb() {
     initEventsTable();
     initLocationsTable();
@@ -207,9 +203,7 @@ function initDb() {
     return true;
 }
 
-/////////////////////////////////////////////
-////////////////// APP.USE //////////////////
-/////////////////////////////////////////////
+// APPLICATION INITIALIZATION
 
 app.use(express.static(__dirname + "/public"));
 
@@ -217,34 +211,18 @@ app.use(bodyParser.json({inflate: true}));
 app.use(bodyParser.urlencoded({extended: true, inflate: true}));
 
 
-// Register REST entry points
+// APP.GET METHODS
 
-/////////////////////////////////////////////
-////////////////// APP.GET //////////////////
-/////////////////////////////////////////////
-
-
-// Name of the tables are:
-// events
-// locations
-// people
-// services
-//// servicesLocations
-// whoweare
-
-
-// retrieve "who we are" data
-// result returned as a JSON array with a single element
+/* retrieve "who we are" data, return result as a JSON array with a single elem */
 app.get("/whoweare", function(request, response) {
-    // retrieve the whole table, because it contains only 1 entry
+    // i can retrieve the whole table, because it contains only 1 entry
     let myQuery = sqlDb("whoweare")
         .then(result => {
             response.send(JSON.stringify(result));
         })
 })
 
-// retrieve data about all services
-// result returned as JSON array
+/* retrieve data about all services, return result as JSON array */
 app.get("/services", function(request,response) {
     let myQuery = sqlDb("services")
         .then(result => {
@@ -253,8 +231,7 @@ app.get("/services", function(request,response) {
 })
 
 
-// retrieve data about all people
-// result returned as a JSON array
+/* retrieve data about all people, return result as a JSON array */
 app.get("/people", function(request, response) {
     let myQuery = sqlDb("people").orderByRaw('surname, name')
         .then(result => {
@@ -262,8 +239,7 @@ app.get("/people", function(request, response) {
         })
 })
 
-// retrieve data about all the locations
-// result returned as a JSON array
+/* retrieve data about all the locations return result as a JSON array */
 app.get("/locations", function(request, response) {
     let myQuery = sqlDb("locations")
         .then(result => {
@@ -271,8 +247,7 @@ app.get("/locations", function(request, response) {
         })
 })
 
-//retrieve data about all events
-//result returned as a JSON array
+/* retrieve data about all events, return result as a JSON array */
 app.get("/events", function(request, response) {
     let myQuery = splDb("events").orderBy('date')
         .then(result => {
@@ -280,8 +255,8 @@ app.get("/events", function(request, response) {
         })
 })
 
-// given a person id, retrieve all data about that person
-// result returned as a JSON array with a single element
+/* given a person id, retrieve all data about that person,
+return result as a JSON array with a single element */
 app.get("/people/:id", function(request, response) {
     let myQuery = sqlDb("people");
     myQuery.where("id", request.params.id)
@@ -290,8 +265,8 @@ app.get("/people/:id", function(request, response) {
         })
 })
 
-// given a service id, retrieve all data about that service
-// result returned as a JSON array with a single element
+/* given a service id, retrieve all data about that service
+ return result as a JSON array with a single element */
 app.get("/services/:id", function(request, response) {
     let myQuery = sqlDb("services");
     myQuery.where("id", request.params.id)
@@ -300,8 +275,8 @@ app.get("/services/:id", function(request, response) {
         })
 })
 
-// given a location id, retrieve all data about that location
-// result returned as a JSON array with a single element
+/* given a location id, retrieve all data about that location
+ return result as a JSON array with a single element */
 app.get("/locations/:id", function(request, response) {
     let myQuery = sqlDb("locations");
     myQuery.where("id", request.params.id)
@@ -310,8 +285,8 @@ app.get("/locations/:id", function(request, response) {
         })
 })
 
-// given a service id, retrieve data of people working in it
-// result returned as a JSON array
+/* given a service id, retrieve data of people working in it
+ return result as a JSON array */
 app.get("/services/:id/people", function(request, response) {
     let myQuery = sqlDb("people");
     myQuery.select().where("serviceId", request.params.id)
@@ -320,8 +295,8 @@ app.get("/services/:id/people", function(request, response) {
         })
 })
 
-// given a location id, retrieve data of the services located in that location
-// result returned as a JSON array
+/* given a location id, retrieve data of the services located in that location
+ return result as a JSON array */
 app.get("/locations/:id/services", function(request, response) {
     let myQuery = sqlDb("services");
     myQuery.select().where("locationId", request.params.id)
@@ -330,8 +305,8 @@ app.get("/locations/:id/services", function(request, response) {
         })
 })
 
-// given a service id, retrieve data of the locations in which that service exists
-// result returned as a JSON array
+/* given a service id, retrieve data of the locations in which that service exists
+ return result returned as a JSON array */
 app.get("/services/:id/locations", function(request, response) {
     let myQuery = sqlDb.select().from("locations").whereIn("id", function() {
             this.select("locationId").from("servicesLocations").where("serviceId", request.params.id);
@@ -342,14 +317,12 @@ app.get("/services/:id/locations", function(request, response) {
 })
 
 
-/////////////////////////////////////////////
-///////////////// APP.POST //////////////////
-/////////////////////////////////////////////
+// APP.POST METHODS
 
-//**NOTE**: current implementation of the input form has a slightly
-//counter-intuitive behavior,in order to make it easier to test. The input
-//email address is used as recipient of the message instead of sender.
-//In this way a tester is able to easily verify the behavior of the feature.
+/* **NOTE**: current implementation of the input form has a slightly
+  counter-intuitive behavior,in order to make it easier to test. The input
+  email address is used as recipient of the message instead of sender.
+  In this way a tester is able to easily verify the behavior of the feature. */
 
 /*  Form data handling. Given the following data:
  *      - name: writer's name
@@ -359,12 +332,13 @@ app.get("/services/:id/locations", function(request, response) {
  *
  *      an email will be sent to the writer's mail
  */
+
 app.post('/contactForm', function(request, response) {
 
     var smtpConfig = {
         host: 'smtp.gmail.com',
         port: 465,
-        secure: true, // use SSL
+        secure: true, // use Secure Socket Layer
         auth: {
             user: 'cooperativaandy@gmail.com',
             pass: 'andycapandycap'
@@ -392,12 +366,7 @@ app.post('/contactForm', function(request, response) {
     response.end('thanks');
 });
 
-
-/////////////////////////////////////////////
-/////////////////// INIT ////////////////////
-/////////////////////////////////////////////
-
-// instantiate the app
+// INSTANTIATION OF THE APPLICATION. WE ARE READY TO START!
 
 let serverPort = process.env.PORT || 5000;
 app.set("port", serverPort);
@@ -405,7 +374,7 @@ app.set("port", serverPort);
 initSqlDB();
 initDb();
 
-/* Start the server on port 3000 */
+// Start the server on port 5000
 app.listen(serverPort, function() {
     console.log(`Your app is ready at port ${serverPort}`);
 });
