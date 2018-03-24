@@ -249,7 +249,7 @@ app.get("/locations", function(request, response) {
 
 /* retrieve data about all events, return result as a JSON array */
 app.get("/events", function(request, response) {
-    let myQuery = splDb("events").orderBy('date')
+    let myQuery = sqlDb("events").orderBy('date')
         .then(result => {
           response.send(JSON.stringify(result));
         })
