@@ -146,8 +146,7 @@
         <h4 class="g-font-weight-200"></h4>
       </div>
 
-      <p style="text-align:center;">Una storia di amore, amicizia e passione che ogni giorno ci fa continuare con il sorriso sul volto.</p>
-      <p style="text-align:center;">Da oltre trent'anni ci dedichiamo all'accoglienza e alla cura di bambini, ragazzi e adulti affetti da sindrome di down, autisto e sordomutismo. <br>Aiutiamo in particolare le famiglie a camminare con noi e a comprendere i propri ragazzi.</p>
+      <p id="WhoWeAreText" style="text-align:center;"> ... </p>
       <!-- end Introduction -->
 
       <!-- Timeline #01 -->
@@ -754,5 +753,22 @@
       parallaxMode: 'swipe',
       view: "basic"
     });
+  </script>
+
+  <script type="text/javascript">
+  jQuery(document).ready(function() {
+      fetch(`/whoweare`)
+      .then(function(response) {
+          console.log("/whoweare fetched");
+          return response.json();
+      })
+      .then(function(data) {
+          console.log(data[0].info);
+          document.getElementById('WhoWeAreText').textContent = data[0].info;
+      }).catch(function(err) {
+          // Gets called if request fails, or even if .then fails
+          return badRequest();
+      });
+  });
   </script>
 </html>
