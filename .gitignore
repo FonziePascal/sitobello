@@ -61,7 +61,7 @@ typings/
 <<<<<<< HEAD
 
 # database
-other/clinicdb.sqlite
+*.sqlite
 
 # tags
 .tags1
