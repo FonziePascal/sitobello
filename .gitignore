@@ -60,10 +60,14 @@ typings/
 .env
 <<<<<<< HEAD
 
+#DS
+.DS_Store
+
 # database
 *.sqlite
 
 # tags
+.tags
 .tags1
 
 package-lock.json
