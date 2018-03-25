@@ -3,18 +3,18 @@
     "name":"aaas",
     "description": "dasasdasdsa",
     "date": "hhh",
-    "locationId": "kgkhkjh"
+    "locationId": 1
   },
   {
     "name":"2222222",
     "description": "description event 2",
     "date": "gk",
-    "locationId": "jhkhj"
+    "locationId": 2
   },
   {
     "name":"name event 3",
     "description": "description event 3",
     "date": "gfjg",
-    "locationId": "jgjjkjkj"
-  }
+    "locationId": 2
+    }
 ]

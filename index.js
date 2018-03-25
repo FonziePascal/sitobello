@@ -3,7 +3,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const sqlDbFactory = require("knex");
+const knex = require("knex");
 const _ = require("lodash");
 const process = require("process");
 const nodemailer = require("nodemailer");
@@ -29,7 +29,7 @@ function initSqlDB() {
     // if I'm testing the application
     if (process.env.TEST) {
         console.log("test mode");
-        sqlDb = sqlDbFactory({
+        sqlDb = knex({
             debug: true,
             client: "sqlite3",
             connection: {
@@ -39,7 +39,7 @@ function initSqlDB() {
     // Nontestisng
     } else {
         console.log("non-test mode");
-        sqlDb = sqlDbFactory({
+        sqlDb = knex({
             debug: true,
             client: "pg",
             connection: process.env.DATABASE_URL,
@@ -61,9 +61,9 @@ function initEventsTable() {
             })
             .then(() => {
                 return Promise.all(
-                    _.map(eventsList, p => {
+                    _.map(eventsList, i => {
                         // insert the row
-                        return sqlDb("events").insert(p).catch(function(err) {
+                        return sqlDb("events").insert(i).catch(function(err) {
                             console.log("ERROR WHILE FILLING EVENTS TABLE");
                             console.log(err);
                         })
@@ -89,9 +89,9 @@ function initLocationsTable() {
             })
             .then(() => {
                 return Promise.all(
-                    _.map(locationsList, p => {
+                    _.map(locationsList, i => {
                         // insert the row
-                        return sqlDb("locations").insert(p).catch( err => {
+                        return sqlDb("locations").insert(i).catch( err => {
                             console.log("ERROR WHILE FILLING LOCATIONS TABLE");
                             console.log(err);
                         })
@@ -120,10 +120,10 @@ function initPeopleTable() {
             })
             .then(() => {
                 return Promise.all(
-                    _.map(peopleList, p => {
+                    _.map(peopleList, i => {
                         // insert the row
                         // delete p.basicInfo;
-                        return sqlDb("people").insert(p).catch( err => {
+                        return sqlDb("people").insert(i).catch( err => {
                             console.log("ERROR WHILE FILLING PEOPLE TABLE");
                             console.log(err);
                         })
@@ -150,9 +150,9 @@ function initServicesTable() {
             })
             .then(() => {
                 return Promise.all(
-                    _.map(servicesList, p => {
+                    _.map(servicesList, i => {
                         // insert the row
-                        return sqlDb("services").insert(p).catch( err => {
+                        return sqlDb("services").insert(i).catch( err => {
                             console.log("ERROR WHILE FILLING SERVICES TABLE");
                             console.log(err);
                         })
@@ -175,9 +175,9 @@ function initWhoWeAreTable() {
             })
             .then(() => {
                 return Promise.all(
-                    _.map(whoweareInfo, p => {
+                    _.map(whoweareInfo, i => {
                         // insert the row
-                        return sqlDb("whoweare").insert(p).catch( err => {
+                        return sqlDb("whoweare").insert(i).catch( err => {
                             console.log("ERROR WHILE FILLING WHOWEARE TALBE");
                             console.log(err);
                         });
@@ -300,17 +300,6 @@ app.get("/services/:id/people", function(request, response) {
 app.get("/locations/:id/services", function(request, response) {
     let myQuery = sqlDb("services");
     myQuery.select().where("locationId", request.params.id)
-        .then(result => {
-            response.send(JSON.stringify(result));
-        })
-})
-
-/* given a service id, retrieve data of the locations in which that service exists
- return result returned as a JSON array */
-app.get("/services/:id/locations", function(request, response) {
-    let myQuery = sqlDb.select().from("locations").whereIn("id", function() {
-            this.select("locationId").from("servicesLocations").where("serviceId", request.params.id);
-        })
         .then(result => {
             response.send(JSON.stringify(result));
         })
