@@ -82,7 +82,7 @@
                         <a href="associazione.html">ASSOCIAZIONE</a>
                       </li>
                       <li>
-                        <a href="contattaci.html!">CONTATTACI</a>
+                        <a href="contattaci.html">CONTATTACI</a>
                       </li>
                       <li>
                         <a href="dove_siamo.html">DOVE SIAMO</a>
@@ -498,6 +498,28 @@ Il <strong>Servizio di Estetista</strong> prevede una presenza settimanale del p
     $(document).ready(function () {
       $.HSCore.components.HSCarousel.init('.js-carousel');
 
+      $(window).on('load', function() {
+        // initialization of header
+        $.HSCore.components.HSHeader.init($('#js-header'));
+        $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+        // initialization of HSMegaMenu component
+        $('.js-mega-menu').HSMegaMenu({
+          event: 'hover',
+          pageContainer: $('.container'),
+          breakpoint: 991
+        });
+
+        // initialization of masonry
+        $('.masonry-grid').imagesLoaded().then(function () {
+          $('.masonry-grid').masonry({
+            columnWidth: '.masonry-grid-sizer',
+            itemSelector: '.masonry-grid-item',
+            percentPosition: true
+          });
+        });
+      });
+
       $('#carousel1').slick('setOption', 'customPaging', function (slider, i) {
         var title = $(slider.$slides[i]).data('title');
 
@@ -575,10 +597,7 @@ Il <strong>Servizio di Estetista</strong> prevede una presenza settimanale del p
       .then(function(data) {
           console.log(data);
           data.forEach(function(item) {
-              $('#peopleList').append(`
-                  <p class="g-color-white-opacity-0_7 g-mb-30"><strong>` + item.name + item.surname + `</strong><br> Nome e cogmone (parrucchiere): <a href="nome.cognome@titolo.it"> nome.cognome@titolo.it </a> <br> Nome e cogmone (estetista): <a href="nome.cognome@titolo.it"> nome.cognome@titolo.it </a>
-                  </p>
-                      `);
+              $('#peopleList').append(`<p class="g-color-white-opacity-0_7 g-mb-30"><strong>` + item.name + " " + item.surname + `</strong><br>` + item.name + " " + item.surname + "(" + item.role + "):" `<a href="nome.cognome@titolo.it"> nome.cognome@titolo.it </a> <br> Nome e cogmone (estetista): <a href="nome.cognome@titolo.it"> nome.cognome@titolo.it </a></p>`);
           });
       }).catch(function(err) {
           console.log(err);
