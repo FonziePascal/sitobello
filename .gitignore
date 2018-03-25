@@ -60,10 +60,14 @@ typings/
 .env
 <<<<<<< HEAD
 
+#DS
+.DS_Store
+
 # database
-other/clinicdb.sqlite
+*.sqlite
 
 # tags
+.tags
 .tags1
 
 package-lock.json
