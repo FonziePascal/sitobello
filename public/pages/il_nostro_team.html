@@ -280,7 +280,7 @@ Il <strong>Servizio di Estetista</strong> prevede una presenza settimanale del p
       </div>
       <br>
       <!-- End Dynamic Process -->
-      
+
       <!-- Footer -->
       <div class="g-bg-black-opacity-0_9 g-color-white-opacity-0_8 g-py-30">
         <div class="container">
@@ -601,11 +601,11 @@ Il <strong>Servizio di Estetista</strong> prevede una presenza settimanale del p
           data.forEach(function(item) {
               $('#peopleList').append(`<p class="g-color-white-opacity-0_7 g-mb-30"><strong>` + item.name + " " + item.surname + `</strong><br>` + item.name + " " + item.surname + "(" + item.role + "):" `<a href="nome.cognome@titolo.it"> nome.cognome@titolo.it </a> <br> Nome e cogmone (estetista): <a href="nome.cognome@titolo.it"> nome.cognome@titolo.it </a></p>`);
           });
-      }).catch(function(err) {
+      })/*.catch(function(err) {
           console.log(err);
           // Gets called if request fails, or even if .then fails
           return alert("haia");
-      });
+      })possiamo levarlo?*/;
 
   </script>
 
