@@ -155,8 +155,8 @@
       <!-- end Introduction -->
 
       <!-- Team Block -->
-      <div class="row">
-        <div class="col-md-4 g-mb-30">
+      <div id="location_list" class="row">
+        <div  class="col-md-4 g-mb-30">
           <!-- Figure -->
           <figure class="u-shadow-v21 u-shadow-v21--hover g-brd-around g-brd-gray-light-v4 g-bg-white g-rounded-4 text-center g-transition-0_3">
             <div class="g-py-40 g-px-20">
@@ -601,6 +601,64 @@
       dir: "h",
       parallaxMode: 'swipe',
       view: "basic"
+    });
+
+    jQuery(document).ready(function() {
+        fetch(`/locations`)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                data.map(add_location);
+            });
+
+        function add_location(location) {
+            $("#location_list").append(`
+              <div  class="col-md-4 g-mb-30">
+                <!-- Figure -->
+                <figure class="u-shadow-v21 u-shadow-v21--hover g-brd-around g-brd-gray-light-v4 g-bg-white g-rounded-4 text-center g-transition-0_3">
+                  <div class="g-py-40 g-px-20">
+                    <!-- Figure Image -->
+                    <img class="g-width-100 g-height-100 rounded-circle g-mb-30" src="../assets/img/casa` + location.id + `.jpg" alt="Image Description">
+                    <!-- Figure Image -->
+
+                    <!-- Figure Info -->
+                    <h4 class="g-font-weight-600 g-font-size-16 g-mb-15">` + location.name + `</h4>
+                    <p> </p>
+                    <p> <br> ` + location.basicInfo + `<br> Scopri i nostri <a href="sedi_e_servizi.html">Servizi</a> </p>
+
+                    <div class="g-py-10">
+                      <hr class="g-brd-gray-light-v4 g-my-15"> <!-- linea di separazione-->
+                      <!-- Figure Contacts -->
+                      <ul class="list-unstyled g-color-black-v5 g-font-size-13 g-mb-0">
+                        <li class="g-mb-10">
+                          <i class="g-pos-rel g-mt-1 mr-2 et-icon-map u-line-icon-pro"></i>
+                          <a>` + location.address + ` <br>` + location.city + `(CT 95024</a>
+                        </li>
+                        <li class="g-mb-10">
+                          <i class="g-pos-rel g-mt-1 mr-2 icon-communication-062 u-line-icon-pro"></i>
+                          <a href="mailto:` + location.mail + `">` + location.mail + `</a>
+                        </li>
+                        <li>
+                          <i class="g-pos-rel g-top-1 mr-2 icon-electronics-005 u-line-icon-pro"></i>
+                          <em class="g-font-style-normal">` + location.phone + `</em>
+                        </li>
+                      </ul>
+                      <!-- End Figure Contacts -->
+                    </div>
+
+                    <!-- End Figure Info -->
+                  </div>
+
+                  <!-- Figure Footer -->
+                  <footer class="d-flex justify-content-between g-bg-gray-light-v5 g-py-20 g-px-40">
+                    <a class="g-color-gray-dark-v5 g-color-primary--hover g-font-size-13 g-text-underline--none--hover" href="#!">` + location.visitors + ` visitatori </a>
+                  </footer>
+                  <!-- End Figure Footer -->
+                </figure>
+                <!-- End Figure -->
+              </div>`);
+        }
     });
   </script>
 </html>

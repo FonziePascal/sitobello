@@ -82,10 +82,15 @@ function initLocationsTable() {
         // if doesn't exists, create the table
         if (!exists) {
             sqlDb.schema.createTable("locations", table => {
+                // create the table
                 table.increments("id").primary();
                 table.string("name");
                 table.text("basicInfo");
-                table.string("contacts");
+                table.string("mail");
+                table.string("address");
+                table.string("city");
+                table.string("phone");
+                table.integer("visitors");
             })
             .then(() => {
                 return Promise.all(
