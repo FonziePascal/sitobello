@@ -1,18 +1,74 @@
 [
   {
-    "name": "Anatomia Patologica",
-    "description": "Il ruolo dell’Anatomia Patologica è decisivo per l’inquadramento clinico del paziente. Il responso dell’anatomo-patologo, quando si pone a monte, come nel caso degli screening, influenza la scelta del successivo percorso diagnostico; può indirizzare le scelte chirurgiche, come nel caso delle analisi intra-operatorie; consente di valutare la prognosi e di indirizzare le scelte terapeutiche nell’atto finale dell’analisi post-operatoria.",
+    "name": "Arteterapia",
+    "description": "",
     "contacts": "",
     "locationId": 1,
-    "info": "luogo di perdizione e di vita amena",
-    "location": "Buccinascos"
+    "info": "",
+    "location": "Piubega"
   },
   {
-    "name": "ffffff",
-    "description": "gggg",
-    "contacts": "2",
+    "name": "Corso di nuoto",
+    "description": "",
+    "contacts": "",
     "locationId": 2,
-    "info": "luogo di perdizione e di vita amena",
-    "location": "Buccinarcos"
+    "info": "",
+    "location": "Aci Catena"
+  },
+  {
+    "name": "Estetista",
+    "description": "",
+    "contacts": "",
+    "locationId": 3,
+    "info": "",
+    "location": "Aci Castello"
+  },
+  {
+    "name": "Pet therapy",
+    "description": "",
+    "contacts": "",
+    "locationId": 2,
+    "info": "",
+    "location": "Aci Catena"
+  },
+  {
+    "name": "Musicoterapia",
+    "description": "",
+    "contacts": "",
+    "locationId": 1,
+    "info": "",
+    "location": "Piubega"
+  },
+  {
+    "name": "Sostegno compiti",
+    "description": "",
+    "contacts": "",
+    "locationId": 4,
+    "info": "",
+    "location": "Acireale"
+  },
+  {
+    "name": "Cucina insieme",
+    "description": "",
+    "contacts": "",
+    "locationId": 3,
+    "info": "",
+    "location": "Aci Castello"
+  },
+  {
+    "name": "Lab teatro",
+    "description": "",
+    "contacts": "",
+    "locationId": 1,
+    "info": "",
+    "location": "Piubega"
+  },
+  {
+    "name": "Sportello psicologo",
+    "description": "",
+    "contacts": "",
+    "locationId": 4,
+    "info": "",
+    "location": "Acireale"
   }
 ]

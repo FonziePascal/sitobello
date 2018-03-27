@@ -1,20 +1,20 @@
 [
   {
-    "name":"aaas",
+    "name":"domenica al parco",
     "description": "dasasdasdsa",
     "date": "hhh",
+    "locationId": 2
+  },
+  {
+    "name":"maratona",
+    "description": "raccogliamo fondi per le nostre attività",
+    "date": "gk",
     "locationId": 1
   },
   {
-    "name":"2222222",
-    "description": "description event 2",
-    "date": "gk",
-    "locationId": 2
-  },
-  {
-    "name":"name event 3",
+    "name":"partita del cuore",
     "description": "description event 3",
     "date": "gfjg",
-    "locationId": 2
+    "locationId": 3
     }
 ]
