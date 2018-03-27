@@ -1,74 +1,74 @@
 [
   {
     "name": "Arteterapia",
-    "description": "",
-    "contacts": "",
+    "description": "null",
+    "contacts": "null",
     "locationId": 1,
-    "info": "",
+    "info": "null",
     "location": "Piubega"
   },
   {
     "name": "Corso di nuoto",
-    "description": "",
-    "contacts": "",
+    "description": "null",
+    "contacts": "null",
     "locationId": 2,
-    "info": "",
+    "info": "null",
     "location": "Aci Catena"
   },
   {
     "name": "Estetista",
-    "description": "",
-    "contacts": "",
+    "description": "null",
+    "contacts": "null",
     "locationId": 3,
-    "info": "",
+    "info": "null",
     "location": "Aci Castello"
   },
   {
     "name": "Pet therapy",
-    "description": "",
-    "contacts": "",
+    "description": "null",
+    "contacts": "null",
     "locationId": 2,
-    "info": "",
+    "info": "null",
     "location": "Aci Catena"
   },
   {
     "name": "Musicoterapia",
-    "description": "",
-    "contacts": "",
+    "description": "null",
+    "contacts": "null",
     "locationId": 1,
-    "info": "",
+    "info": "null",
     "location": "Piubega"
   },
   {
     "name": "Sostegno compiti",
-    "description": "",
-    "contacts": "",
+    "description": "null",
+    "contacts": "null",
     "locationId": 4,
-    "info": "",
+    "info": "null",
     "location": "Acireale"
   },
   {
     "name": "Cucina insieme",
-    "description": "",
-    "contacts": "",
+    "description": "null",
+    "contacts": "null",
     "locationId": 3,
-    "info": "",
+    "info": "null",
     "location": "Aci Castello"
   },
   {
     "name": "Lab teatro",
-    "description": "",
-    "contacts": "",
+    "description": "null",
+    "contacts": "null",
     "locationId": 1,
-    "info": "",
+    "info": "null",
     "location": "Piubega"
   },
   {
     "name": "Sportello psicologo",
-    "description": "",
-    "contacts": "",
+    "description": "null",
+    "contacts": "null",
     "locationId": 4,
-    "info": "",
+    "info": "null",
     "location": "Acireale"
   }
 ]
