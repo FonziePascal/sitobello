@@ -16,5 +16,12 @@
     "description": "description event 3",
     "date": "gfjg",
     "locationId": 3
+  },
+  {
+    "name":"amici per la pelle",
+    "description": "giornata di giochi in cui i normodotati aiutano i disabili a fare tutto e fanno giochi e attività di integrazione",
+    "date": "gfjg",
+    "locationId": 4
     }
+
 ]
