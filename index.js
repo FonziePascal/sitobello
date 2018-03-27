@@ -152,6 +152,8 @@ function initServicesTable() {
                 table.text("description");
                 table.string("contacts");
                 table.integer("locationId");
+                table.string("info");
+                table.string("location");
             })
             .then(() => {
                 return Promise.all(
@@ -334,8 +336,8 @@ app.post('/contactForm', function(request, response) {
         port: 465,
         secure: true, // use Secure Socket Layer
         auth: {
-            user: 'cooperativaandy@gmail.com',
-            pass: 'andycapandycap'
+            user: 'lacasaperilmondo@gmail.com',
+            pass: 'lacasalacasa'
         }
     };
     var transporter = nodemailer.createTransport(smtpConfig);
