@@ -120,8 +120,10 @@ function initPeopleTable() {
                 table.string("surname");
                 table.integer("serviceId");
                 table.string("role");
+                table.integer("roleId");
                 table.text("basicInfo");
                 table.string("email");
+                table.integer("locationId");
             })
             .then(() => {
                 return Promise.all(
@@ -153,7 +155,7 @@ function initServicesTable() {
                 table.string("contacts");
                 table.integer("locationId");
                 table.string("info");
-                table.string("location");
+                table.string("locationName");
             })
             .then(() => {
                 return Promise.all(
