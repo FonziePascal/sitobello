@@ -155,7 +155,7 @@ function initServicesTable() {
                 table.string("contacts");
                 table.integer("locationId");
                 table.string("info");
-                table.string("locationName");
+                table.string("location");
             })
             .then(() => {
                 return Promise.all(
