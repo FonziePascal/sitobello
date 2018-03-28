@@ -27,7 +27,7 @@
     "name": "Pet therapy",
     "description": "null",
     "contacts": "null",
-    "locationId": 2,
+    "locationId": 4,
     "info": "null",
     "location": "Aci Catena"
   },
@@ -35,40 +35,8 @@
     "name": "Musicoterapia",
     "description": "null",
     "contacts": "null",
-    "locationId": 1,
+    "locationId": 5,
     "info": "null",
     "location": "Piubega"
-  },
-  {
-    "name": "Sostegno compiti",
-    "description": "null",
-    "contacts": "null",
-    "locationId": 4,
-    "info": "null",
-    "location": "Acireale"
-  },
-  {
-    "name": "Cucina insieme",
-    "description": "null",
-    "contacts": "null",
-    "locationId": 3,
-    "info": "null",
-    "location": "Aci Castello"
-  },
-  {
-    "name": "Lab teatro",
-    "description": "null",
-    "contacts": "null",
-    "locationId": 1,
-    "info": "null",
-    "location": "Piubega"
-  },
-  {
-    "name": "Sportello psicologo",
-    "description": "null",
-    "contacts": "null",
-    "locationId": 4,
-    "info": "null",
-    "location": "Acireale"
   }
 ]

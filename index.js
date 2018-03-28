@@ -120,10 +120,8 @@ function initPeopleTable() {
                 table.string("surname");
                 table.integer("serviceId");
                 table.string("role");
-                table.integer("roleId");
                 table.text("basicInfo");
                 table.string("email");
-                table.integer("locationId");
             })
             .then(() => {
                 return Promise.all(
