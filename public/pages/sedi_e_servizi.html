@@ -153,12 +153,12 @@
 
     <!-- Cube Portfolio Blocks - Filter -->
     <ul id="filter_controls" class="d-block list-inline text-center g-mb-50">
-        <li id="filter_action" class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter="all">A-Z</li>
+        <li class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter="*">A-Z</li>
     </ul>
     <!-- End Cube Portfolio Blocks - Filter -->
 
     <!-- Cube Portfolio Blocks - Content -->
-    <div id="services_list" class="cbp" data-controls="#filterControls" data-animation="quicksand" data-x-gap="30" data-y-gap="30">
+    <div id="services_list" class="cbp" data-controls="#filter_controls" data-animation="quicksand" data-x-gap="30" data-y-gap="30">
       <!--  class="cbp" data-controls="#filterControls" data-animation="quicksand" data-x-gap="30" data-y-gap="30" data-media-queries="[
       {'width': 1500, 'cols': 3},
       {'width': 1100, 'cols': 3},
@@ -404,8 +404,6 @@ $(document).on('ready', function () {
 
 <!-- JS Plugins Init. -->
 <script>
-$(document).on('ready', function () {
-});
 
 $(window).on('load', function() {
   // initialization of header
@@ -487,7 +485,6 @@ slider.setup("masterslider", {
 
 jQuery(document).ready(function() {
     var locations = [];
-    var locationNames = [];
     fetch(`/services`)
         .then(function(response) {
             console.log("Services fetched");
@@ -506,9 +503,8 @@ jQuery(document).ready(function() {
             $.HSCore.components.HSModalWindow.init('[data-modal-target]');
             // initialization of carousel
             $.HSCore.components.HSCarousel.init('.js-carousel');
-            $('.cbp').mixitup();
         })
-        .then(function(data) {
+/*        .then(function(data) {
             $("filter_action").each(function(index) {
                 if (index > 0) { //skip first "all" filter
                     let id = $(this).attr("data-filter").slice(-1);
@@ -518,24 +514,24 @@ jQuery(document).ready(function() {
                             return response.json();
                         })
                         .then(function(data) {
-                            $('*[data-filter="' + data[0].id + '"]').text(data[0].name);
+                            $('*[data-filter="service_' + data[0].id + '"]').text(data[0].name);
                         });
                 }
             });
         });
-
+*/
     function add_location_sort(service) {
         if (!locations.includes(service.locationId)) {
             locations[service.locationId] = service.locationId;
-            $("#filter_controls").append('<li id="filter_action" class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter="' + service.locationId + '">' + service.location + '</li>');
+            console.log(locations);
+            $("#filter_controls").append('<li id="filter_action" class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter=".' + service.locationId + '">' + service.location + '</li>');
         }
     }
 
-    function add_service(service) {
-        locationNames[0] = service.location;
+    function add_service(service) {;
         console.log(service);
         $("#services_list").append(`
-            <div class="cbp-item Buccinasco Galliate Acireale">
+            <div class="cbp-item ` + service.locationId + `">
               <div class="u-block-hover g-parent">
                 <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../assets/img/servizi/service` + service.id + `.jpg" alt="Image ` + service.id + ` description">
               </div>
@@ -562,7 +558,7 @@ jQuery(document).ready(function() {
                         <p>Siamo presenti nelle seguenti <a href="dove_siamo.html" title="visualizza dove siamo">sedi</a>:</p>
                         <ul class="list-unstyled g-font-size-13 mb-0">
                           <li id="service_locations">
-                          <i class="d-inline-block g-color-primary mr-2 mb-3 fa fa-map-marker"></i>` + locationNames[0] + `
+                          <i class="d-inline-block g-color-primary mr-2 mb-3 fa fa-map-marker"></i>` + service.location + `
                           </li>
                           <br>
                           <li>
@@ -579,9 +575,9 @@ jQuery(document).ready(function() {
                 <!-- End modal window -->
                 <p class="mb-0">` + service.location + `</p>
               </div>
-            </div>`)
+            </div>
+        `)
     }
-
 });
 </script>
 </html>
