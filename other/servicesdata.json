@@ -1,18 +1,74 @@
 [
   {
-    "name": "Anatomia Patologica",
-    "description": "Il ruolo dell’Anatomia Patologica è decisivo per l’inquadramento clinico del paziente. Il responso dell’anatomo-patologo, quando si pone a monte, come nel caso degli screening, influenza la scelta del successivo percorso diagnostico; può indirizzare le scelte chirurgiche, come nel caso delle analisi intra-operatorie; consente di valutare la prognosi e di indirizzare le scelte terapeutiche nell’atto finale dell’analisi post-operatoria.",
-    "contacts": "",
+    "name": "Arteterapia",
+    "description": "null",
+    "contacts": "null",
     "locationId": 1,
-    "info": "luogo di perdizione e di vita amena",
-    "location": "Buccinascos"
+    "info": "null",
+    "location": "Piubega"
   },
   {
-    "name": "ffffff",
-    "description": "gggg",
-    "contacts": "2",
+    "name": "Corso di nuoto",
+    "description": "null",
+    "contacts": "null",
     "locationId": 2,
-    "info": "luogo di perdizione e di vita amena",
-    "location": "Buccinarcos"
+    "info": "null",
+    "location": "Aci Catena"
+  },
+  {
+    "name": "Estetista",
+    "description": "null",
+    "contacts": "null",
+    "locationId": 3,
+    "info": "null",
+    "location": "Aci Castello"
+  },
+  {
+    "name": "Pet therapy",
+    "description": "null",
+    "contacts": "null",
+    "locationId": 2,
+    "info": "null",
+    "location": "Aci Catena"
+  },
+  {
+    "name": "Musicoterapia",
+    "description": "null",
+    "contacts": "null",
+    "locationId": 1,
+    "info": "null",
+    "location": "Piubega"
+  },
+  {
+    "name": "Sostegno compiti",
+    "description": "null",
+    "contacts": "null",
+    "locationId": 4,
+    "info": "null",
+    "location": "Acireale"
+  },
+  {
+    "name": "Cucina insieme",
+    "description": "null",
+    "contacts": "null",
+    "locationId": 3,
+    "info": "null",
+    "location": "Aci Castello"
+  },
+  {
+    "name": "Lab teatro",
+    "description": "null",
+    "contacts": "null",
+    "locationId": 1,
+    "info": "null",
+    "location": "Piubega"
+  },
+  {
+    "name": "Sportello psicologo",
+    "description": "null",
+    "contacts": "null",
+    "locationId": 4,
+    "info": "null",
+    "location": "Acireale"
   }
 ]
