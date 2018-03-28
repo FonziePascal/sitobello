@@ -494,45 +494,18 @@ jQuery(document).ready(function() {
             $.HSCore.components.HSModalWindow.init('[data-modal-target]');
             // initialization of carousel
             $.HSCore.components.HSCarousel.init('.js-carousel');
-<<<<<<< HEAD
             console.log("Cubeportfolio, Modal Window and Carusel initialised");
-=======
-        })
-/*        .then(function(data) {
-            $("filter_action").each(function(index) {
-                if (index > 0) { //skip first "all" filter
-                    let id = $(this).attr("data-filter").slice(-1);
-                    fetch(`/locations/` + id)
-                        .then(function(response) {
-                            console.log("filtering data: location " + id );
-                            return response.json();
-                        })
-                        .then(function(data) {
-                            $('*[data-filter="service_' + data[0].id + '"]').text(data[0].name);
-                        });
-                }
-            });
->>>>>>> eba81fbcfc451137e00476d8ddcc04d8af6b73a3
         });
-*/
+
     function add_location_sort(service) {
         if (!locations.includes(service.locationId)) {
             locations[service.locationId] = service.locationId;
-<<<<<<< HEAD
             console.log("adding filer_controls");
-=======
-            console.log(locations);
->>>>>>> eba81fbcfc451137e00476d8ddcc04d8af6b73a3
             $("#filter_controls").append('<li id="filter_action" class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter=".' + service.locationId + '">' + service.location + '</li>');
         }
     }
 
-<<<<<<< HEAD
     function add_service(service) {
-=======
-    function add_service(service) {;
-        console.log(service);
->>>>>>> eba81fbcfc451137e00476d8ddcc04d8af6b73a3
         $("#services_list").append(`
             <div class="cbp-item ` + service.locationId + `">
               <div class="u-block-hover g-parent">
