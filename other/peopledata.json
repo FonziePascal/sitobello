@@ -2,25 +2,36 @@
   {
     "name": "Matteo",
     "surname": "Sinico",
-    "serviceId": 3,
     "role": "educatore",
     "basicInfo": "Il Prof. Sinico ha conseguito la Laurea in Medicina.",
-    "email": ""
+    "email": "matteo.sinico@mail.it"
   },
   {
-    "name": "qqqqqqqqqqqqq",
-    "surname": "Sinico",
-    "serviceId": 2,
+    "name": "edu2",
+    "surname": "null",
     "role": "educatore",
-    "basicInfo": "Il Prof. Sinico ha conseguito la Laurea in Medicina.",
-    "email": ""
+    "basicInfo": "null",
+    "email": "edu2@mail.com"
   },
   {
-    "name": "sssss",
-    "surname": "Sinico",
-    "serviceId": 2,
+    "name": "edu3",
+    "surname": "null",
     "role": "educatore",
-    "basicInfo": "Il Prof. Sinico ha conseguito la Laurea in Medicina.",
-    "email": ""
+    "basicInfo": "null",
+    "email": "edu3@mail.com"
+  },
+  {
+    "name": "psi4",
+    "surname": "null",
+    "role": "psicologo",
+    "basicInfo": "null",
+    "email": "psi@mail.it"
+  },
+  {
+    "name": "vol5",
+    "surname": "null",
+    "role": "volontario",
+    "basicInfo": "null",
+    "email": "null"
   }
 ]
