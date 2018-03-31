@@ -20,7 +20,9 @@ process.env.TEST = true;
 let events_list = require("./other/eventsdata.json");
 let locations_list = require("./other/locationsdata.json");
 let people_list = require("./other/peopledata.json");
+let peopleServices_list = require("./other/peopleservicesdata.json");
 let services_list = require("./other/servicesdata.json");
+let servicesLocations_list = require("./other/serviceslocationsdata.json");
 let whoweare_info = require("./other/whowearedata.json");
 
 let sqlDb;
@@ -118,7 +120,6 @@ function initPeopleTable() {
                 table.increments("id").primary();
                 table.string("name");
                 table.string("surname");
-                table.integer("serviceId");
                 table.string("role");
                 table.text("basicInfo");
                 table.string("email");
@@ -142,6 +143,33 @@ function initPeopleTable() {
     });
 }
 
+function initPeopleServicesTable() {
+    return sqlDb.schema.hasTable("peopleServices").then(exists => {
+        // if doesn't exists, create the table
+        if (!exists) {
+            sqlDb.schema.createTable("peopleServices", table => {
+                table.increments("id").primary();
+                table.integer("personId");
+                table.integer("serviceId");
+            })
+            .then(() => {
+                return Promise.all(
+                    _.map(peopleServices_list, i => {
+                        // insert the row
+                        return sqlDb("peopleServices").insert(i).catch(function(err) {
+                            console.log("ERROR WHILE FILLING PEOPLE_SERVICES TABLE");
+                            console.log(err);
+                        })
+                    })
+                );
+            });
+        //If a table is existing, use that table whitout ricreating it
+        } else {
+            return true;
+        }
+    });
+}
+
 function initServicesTable() {
     return sqlDb.schema.hasTable("services").then(exists => {
         // if doesn't exists, create the table
@@ -151,9 +179,7 @@ function initServicesTable() {
                 table.string("name");
                 table.text("description");
                 table.string("contacts");
-                table.integer("locationId");
                 table.string("info");
-                table.string("location");
             })
             .then(() => {
                 return Promise.all(
@@ -161,6 +187,34 @@ function initServicesTable() {
                         // insert the row
                         return sqlDb("services").insert(i).catch( err => {
                             console.log("ERROR WHILE FILLING SERVICES TABLE");
+                            console.log(err);
+                        })
+                    })
+                );
+            });
+        //If a table is existing, use that table whitout ricreating it
+        } else {
+            return true;
+        }
+    });
+}
+
+function initServicesLocationsTable() {
+    return sqlDb.schema.hasTable("servicesLocations").then(exists => {
+        // if doesn't exists, create the table
+        if (!exists) {
+            sqlDb.schema.createTable("servicesLocations", table => {
+                table.increments("id").primary();
+                table.integer("serviceId");
+                table.integer("locationId");
+                table.string("locationName");
+            })
+            .then(() => {
+                return Promise.all(
+                    _.map(servicesLocations_list, i => {
+                        // insert the row
+                        return sqlDb("servicesLocations").insert(i).catch(function(err) {
+                            console.log("ERROR WHILE FILLING SERVICES_LOCATIONS TABLE");
                             console.log(err);
                         })
                     })
@@ -204,7 +258,9 @@ function initDb() {
     initEventsTable();
     initLocationsTable();
     initPeopleTable();
+    initPeopleServicesTable();
     initServicesTable();
+    initServicesLocationsTable();
     initWhoWeAreTable();
 
     return true;
@@ -292,21 +348,24 @@ app.get("/locations/:id", function(request, response) {
         })
 })
 
-/* given a service id, retrieve data of people working in it
- return result as a JSON array */
-app.get("/services/:id/people", function(request, response) {
-    let myQuery = sqlDb("people");
-    myQuery.select().where("serviceId", request.params.id)
+
+/* given a location id, retrieve data of the services located in that location
+ return result as a JSON array*/
+app.get("/servicesbylocation/:id", function(request, response) {
+    let myQuery = sqlDb.select().from("services").whereIn("id", function() {
+            this.select("serviceId").from("servicesLocations").where("locationId", request.params.id);
+        })
         .then(result => {
             response.send(JSON.stringify(result));
         })
 })
 
-/* given a location id, retrieve data of the services located in that location
+/* given a service id, retrieve data of people working in it
  return result as a JSON array */
-app.get("/locations/:id/services", function(request, response) {
-    let myQuery = sqlDb("services");
-    myQuery.select().where("locationId", request.params.id)
+app.get("/peoplebyservice/:id", function(request, response) {
+    let myQuery = sqlDb.select().from("people").whereIn("id", function() {
+            this.select("personId").from("peopleServices").where("serviceId", request.params.id);
+        })
         .then(result => {
             response.send(JSON.stringify(result));
         })

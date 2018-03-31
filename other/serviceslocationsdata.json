@@ -1,0 +1,27 @@
+[
+  {
+    "serviceId": 1,
+    "locationId": 1,
+    "locationName":"Piubega"
+  },
+  {
+    "serviceId": 1,
+    "locationId": 2,
+    "locationName":"Aci Catena"
+  },
+  {
+    "serviceId": 2,
+    "locationId": 2,
+    "locationName":"Aci Catena"
+  },
+  {
+    "serviceId": 2,
+    "locationId": 3,
+    "locationName":"Aci Castello"
+  },
+  {
+    "serviceId": 3,
+    "locationId": 1,
+    "locationName":"Piubega"
+  }
+]

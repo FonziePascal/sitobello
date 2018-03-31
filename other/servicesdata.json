@@ -3,40 +3,30 @@
     "name": "Arteterapia",
     "description": "null",
     "contacts": "null",
-    "locationId": 1,
-    "info": "null",
-    "location": "Piubega"
+    "info": "null"
   },
   {
     "name": "Corso di nuoto",
     "description": "null",
     "contacts": "null",
-    "locationId": 2,
-    "info": "null",
-    "location": "Aci Catena"
+    "info": "null"
   },
   {
     "name": "Estetista",
     "description": "null",
     "contacts": "null",
-    "locationId": 3,
-    "info": "null",
-    "location": "Aci Castello"
+    "info": "null"
   },
   {
     "name": "Pet therapy",
     "description": "null",
     "contacts": "null",
-    "locationId": 2,
-    "info": "null",
-    "location": "Aci Catena"
+    "info": "null"
   },
   {
     "name": "Musicoterapia",
     "description": "null",
     "contacts": "null",
-    "locationId": 1,
-    "info": "null",
-    "location": "Piubega"
+    "info": "null"
   }
 ]

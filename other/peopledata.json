@@ -2,7 +2,6 @@
   {
     "name": "Matteo",
     "surname": "Sinico",
-    "serviceId": 1,
     "role": "educatore",
     "basicInfo": "Il Prof. Sinico ha conseguito la Laurea in Medicina.",
     "email": "matteo.sinico@mail.it"
@@ -10,7 +9,6 @@
   {
     "name": "edu2",
     "surname": "null",
-    "serviceId": 2,
     "role": "educatore",
     "basicInfo": "null",
     "email": "edu2@mail.com"
@@ -18,7 +16,6 @@
   {
     "name": "edu3",
     "surname": "null",
-    "serviceId": 3,
     "role": "educatore",
     "basicInfo": "null",
     "email": "edu3@mail.com"
@@ -26,7 +23,6 @@
   {
     "name": "psi4",
     "surname": "null",
-    "serviceId": 4,
     "role": "psicologo",
     "basicInfo": "null",
     "email": "psi@mail.it"
@@ -34,7 +30,6 @@
   {
     "name": "vol5",
     "surname": "null",
-    "serviceId": 5,
     "role": "volontario",
     "basicInfo": "null",
     "email": "null"
