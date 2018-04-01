@@ -338,6 +338,14 @@ app.get("/services/:id", function(request, response) {
         })
 })
 
+/* retrieve data about locations of services. Return result as a JSON array */
+app.get("/serviceslocations", function(request, response) {
+    let myQuery = sqlDb("serviceslocations")
+        .then(result => {
+            response.send(JSON.stringify(result));
+        })
+})
+
 /* given a location id, retrieve all data about that location
  return result as a JSON array with a single element */
 app.get("/locations/:id", function(request, response) {
@@ -351,9 +359,20 @@ app.get("/locations/:id", function(request, response) {
 
 /* given a location id, retrieve data of the services located in that location
  return result as a JSON array*/
-app.get("/servicesbylocation/:id", function(request, response) {
+app.get("/servicesinlocation/:id", function(request, response) {
     let myQuery = sqlDb.select().from("services").whereIn("id", function() {
             this.select("serviceId").from("servicesLocations").where("locationId", request.params.id);
+        })
+        .then(result => {
+            response.send(JSON.stringify(result));
+        })
+})
+
+/* given a service id, retrieve data of the locations of that service
+ return result as a JSON array*/
+app.get("/locationsofservice/:id", function(request, response) {
+    let myQuery = sqlDb.select().from("locations").whereIn("id", function() {
+            this.select("locationId").from("servicesLocations").where("serviceId", request.params.id);
         })
         .then(result => {
             response.send(JSON.stringify(result));
