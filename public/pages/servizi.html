@@ -504,9 +504,17 @@ jQuery(document).ready(function() {
             })
             .then(function(data){
                 locations = [];
-                data.forEach(function(item){
-                    if (!locations.contains(item.id)){
-                        locations.push(item.id)
+                data.forEach(item => {
+                    var elem = item.id;
+                    if ((locations, elem) => {
+                        for (var i = 0; i < a.length; i++) {
+                            if (a[i] === obj) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }){
+                        locations.push(item.id);
                         $("#filter_controls").append('<li id="filter_action" class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter="' + item.id + '">' + item.name + '</li>');
                     }
                 });
