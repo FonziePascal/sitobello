@@ -30,6 +30,26 @@
     "locationName":"Aci Castello"
   },
   {
+    "serviceId": 4,
+    "locationId": 1,
+    "locationName":"Aci Castello"
+  },
+  {
+    "serviceId": 4,
+    "locationId": 3,
+    "locationName":"Aci Castello"
+  },
+  {
+    "serviceId": 4,
+    "locationId": 4,
+    "locationName":"Acireale"
+  },
+  {
+    "serviceId": 4,
+    "locationId": 5,
+    "locationName":"Aci Sant'Antonio"
+  },
+  {
     "serviceId": 5,
     "locationId": 1,
     "locationName":"Piubega"
