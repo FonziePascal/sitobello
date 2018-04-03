@@ -197,27 +197,27 @@
 
             <div class="row justify-content-center">
               <div class="col-md-5">
-                <form>
+                <form action="/contactForm" method="post" id="form_contattaci">
                   <div class="row">
                     <div class="col-md-6 form-group g-mb-20">
-                      <label class="g-color-gray-dark-v2 g-font-size-13">Nome</label>
-                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="text" placeholder="Luca">
+                      <label class="g-color-gray-dark-v2 g-font-size-13">Nome e Cognome</label>
+                      <input id="name" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="text" placeholder="Luca">
                     </div>
 
                     <div class="col-md-6 form-group g-mb-20">
-                      <label class="g-color-gray-dark-v2 g-font-size-13">Cognome</label>
-                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="text" placeholder="Rossi">
+                      <label class="g-color-gray-dark-v2 g-font-size-13">Oggetto</label>
+                      <input id="subject" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="text" placeholder="Rossi">
                     </div>
                   </div>
 
                   <div class="g-mb-20">
                     <label class="g-color-gray-dark-v2 g-font-size-13">Indirizzo email</label>
-                    <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="email" placeholder="lucarossi@mail.com">
+                    <input id="email2" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="email" placeholder="lucarossi@mail.com">
                   </div>
 
                   <div class="g-mb-20">
                     <label class="g-color-gray-dark-v2 g-font-size-13">Numero di telefono</label>
-                    <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="tel" placeholder="+ (01) 222 33 44">
+                    <input id="phone" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="tel" placeholder="+ (01) 222 33 44">
                   </div>
 
                 </form>
@@ -225,7 +225,7 @@
               <div class="col-md-7">
                 <div class="g-mb-40">
                   <label class="g-color-gray-dark-v2 g-font-size-13">Messaggio</label>
-                  <textarea class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15" rows="12" placeholder="Inserisci qui la tua richiesta"></textarea>
+                  <textarea id="message" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15" rows="12" placeholder="Inserisci qui la tua richiesta"></textarea>
                 </div>
 
                 <div class="text-right">
@@ -528,5 +528,72 @@
       parallaxMode: 'swipe',
       view: "basic"
     });
+
+    var ContactForm = function () {
+        return {
+            //Contact Form
+            initContactForm: function () {
+    	        // Validation
+    	        $("#form_contattaci").validate({
+    	            // Rules for form validation
+    	            rules:{
+    	                name:{
+    	                    required: true
+    	                },
+    	                email:{
+    	                    required: true,
+    	                    email: true
+    	                },
+    	                message:{
+    	                    required: true,
+    	                    minlength: 10
+    	                },
+    	                captcha:{
+    	                    required: true,
+    	                    remote: '#'
+    	                }
+    	            },
+
+    	            // Messages for form validation
+    	            messages:{
+    	                name:{
+    	                    required: 'Inserisci il tuo nome',
+    	                },
+    	                email:{
+    	                    required: 'Inerisci la tua email',
+    	                    email: 'Inserisci una email valida'
+    	                },
+    	                message:{
+    	                    required: 'Inserisci il testo del messaggio'
+    	                },
+    	                captcha:{
+    	                    required: 'Please enter characters',
+    	                    remote: 'Correct captcha is required'
+    	                }
+    	            },
+
+    	            // Ajax form submition
+    	            submitHandler: function(form) {
+    	                $(form).ajaxSubmit({
+    	                    beforeSend: function() {
+    	                        $('#form_contattaci button[type="submit"]').attr('disabled', true);
+    	                    },
+    	                    success: function() {
+    	                    	console.log("successs");
+    	                        $("#form_contattaci").addClass('submited');
+    	                    }
+    	                });
+    	            },
+
+    	            // Do not change code below
+    	            errorPlacement: function(error, element) {
+    	                error.insertAfter(element.parent());
+    	            }
+    	        });
+            }
+
+        };
+
+    }();
   </script>
 </html>
