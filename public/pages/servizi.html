@@ -487,68 +487,55 @@ slider.setup("masterslider", {
 
 jQuery(document).ready(function() {
     var locations = [];
+    var location_cycle =[];
+    var location_x_service = [];
     var s_locations = [];
-    var location_found =[];
 
     fetch('/services')
     .then(function(response){
-        console.log(response);
         return response.json();
     })
     .then(function(data) {
-//        console.log("data: " + data);
-        data.forEach(function(data){
-            //data.id means the id number of the service i'm considering
-            console.log("data.id: " + data.id);
-            fetch('/locationsofservice/' + data.id)
+        s_locations = data.map(varie_cose);
+        console.log("SUITO" + s_locations);
+
+        function varie_cose (service) {
+            fetch('/locationsofservice/' + service.id)
             .then(function(response){
-                return response.json();
+                return response.json()
             })
-            .then(function(data){
-                locations = [];
-                //devo riuscire a far passare l'id del servizio che sto considerando (=> data.id)
-                var asd = data.id;
-                data.forEach((service, asd) => {
-                    console.log("proviamo questa" + asd);
-                    //where service.id means the id of each location in which we can find the service
-                    if (!locations.includes(service.id)){
-//                        console.log("in IF. service.id and locations: " + service.id + " / " + locations)
-                        locations.push(service.id);
-                        if (!location_found.includes(service.id)) {
-                            $("#filter_controls").append('<li id="filter_action" class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter="' + service.id + '">' + service.name + '</li>');
-                            location_found.push(service.id);
- //                           console.log("location_found: " + location_found);
-                        }
-//                        else{ console.log("LOCATION STILL EXISTING" + service.id)};
+            .then(function(data) {
+                locations_x_service = data.map(varie_cose_due);
+                console.log(locations_x_service);
+
+                function varie_cose_due (loc_response) {
+                    //where loc_response.id means the id of each location in which we can find the service
+                    if (!locations.includes(loc_response.id)){
+//                        console.log("in IF. loc_response.id and locations: " + loc_response.id + " / " + locations)
+                        locations.push(loc_response.id);
+                        $("#filter_controls").append('<li id="filter_action" class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter=".' + loc_response.id + '">' + loc_response.name + '</li>');
+                        console.log("location_found: " + loc_response.id + " " + loc_response.name);
                     }
-                    s_locations[asd] = locations.join(" ");
-                    console.log("locations in X: " + s_locations[asd] + " / " + asd);
-                });
-//                console.log("locations arrayy: " + s_locations);
+                    return loc_response.id;
+                };
+
+                return locations_x_service;
             })
-        })
+            .then( location_x_service => {
+                var loc_strgfy = location_x_service.join(' ');
+                    console.log("stringfied " + loc_strgfy);
+                return loc_strgfy;
+            })
+        };
+        return s_locations;
     })
-    .then(function() {
+    .then(function(s_locations) {
+        console.log("CASCACA" + s_locations);
         fetch('/services')
         .then(function(response){
 //            console.log(response);
             return response.json();
-        })/*STO PROVANDO AD ANTICIPARE QUANTO COMMENTATO
-        .then(function(data) {
-            fetch('/locationsofservice/' + data.id)
-            .then(function(response){
-                return response.json();
-            })
-            .then(function(otherdata){
-                locations = [];
-                otherdata.forEach(function(item){
-                    locations.push(item.id)
-                    $("#filter_controls").append('<li id="filter_action" class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter="' + item.id + '">' + item.name + '</li>');
-                });
-                s_locations = locations.toString(' ');
-                console.log(locations);
-            })
-        })*/
+        })
        .then(function(data) {
             console.log("mapping services data");
             data.map(add_service);
