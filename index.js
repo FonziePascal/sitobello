@@ -390,6 +390,17 @@ app.get("/peoplebyservice/:id", function(request, response) {
         })
 })
 
+/* given a person id, retrieve data of services
+ return result as a JSON array */
+app.get("/servicesbypeople/:id", function(request, response) {
+    let myQuery = sqlDb.select().from("services").whereIn("id", function() {
+            this.select("serviceId").from("peopleServices").where("personId", request.params.id);
+        })
+        .then(result => {
+            response.send(JSON.stringify(result));
+        })
+})
+
 
 // APP.POST METHODS
 
