@@ -489,7 +489,6 @@ jQuery(document).ready(function() {
     var locations = [];
     var location_x_service = [];
     var s_locations = [];
-    var s2_locations = [];
 
     fetch('/services')
     .then(function(response){
@@ -499,13 +498,12 @@ jQuery(document).ready(function() {
         s_locations = data.map(varie_cose);
 
         function varie_cose (service) {
-             return fetch('/locationsofservice/' + service.id)
+            return fetch('/locationsofservice/' + service.id)
             .then(function(response){
                 return response.json();
             })
             .then(function(data) {
                 locations_x_service = data.map(varie_cose_due);
-                console.log(locations_x_service);
 
                 function varie_cose_due (loc_response) {
                     //where loc_response.id means the id of each location in which we can find the service
@@ -531,6 +529,13 @@ jQuery(document).ready(function() {
     })
     .then(function(s_locations) {
         Promise.all(s_locations).then(function(s_locations) {
+            var array_locations = [];
+            for ( i = 0; i < s_locations.length; i++ ){
+                var temp = [];
+                temp[i] = s_locations[i].split(' ').join(',');
+                array_locations[i] = JSON.parse("[" + temp[i] + "]");
+            };
+
             fetch('/services')
             .then(function(response){
     //            console.log(response);
@@ -595,8 +600,5 @@ jQuery(document).ready(function() {
     })
 
 });
-
-
-
 </script>
 </html>
