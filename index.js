@@ -17,7 +17,6 @@ process.env.TEST = true;
 //DATABASE INITIALIZATION FUNCTIONS
 
 // get json files that contains data to populate db
-let events_list = require("./other/eventsdata.json");
 let locations_list = require("./other/locationsdata.json");
 let people_list = require("./other/peopledata.json");
 let peopleServices_list = require("./other/peopleservicesdata.json");
