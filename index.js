@@ -49,35 +49,6 @@ function initSqlDB() {
     }
 }
 
-function initEventsTable() {
-    return sqlDb.schema.hasTable("events").then(exists => {
-        // if doesn't exists, create the table
-        if (!exists) {
-            sqlDb.schema.createTable("events", table => {
-                table.increments("id").primary();
-                table.string("name");
-                table.text("description");
-                table.date("date");
-                table.integer("locationId");
-            })
-            .then(() => {
-                return Promise.all(
-                    _.map(events_list, i => {
-                        // insert the row
-                        return sqlDb("events").insert(i).catch(function(err) {
-                            console.log("ERROR WHILE FILLING EVENTS TABLE");
-                            console.log(err);
-                        })
-                    })
-                );
-            });
-        //If a table is existing, use that table whitout ricreating it
-        } else {
-            return true;
-        }
-    });
-}
-
 function initLocationsTable() {
     return sqlDb.schema.hasTable("locations").then(exists => {
         // if doesn't exists, create the table
@@ -91,7 +62,6 @@ function initLocationsTable() {
                 table.string("address");
                 table.string("city");
                 table.string("phone");
-                table.integer("visitors");
             })
             .then(() => {
                 return Promise.all(
@@ -178,7 +148,6 @@ function initServicesTable() {
                 table.string("name");
                 table.text("description");
                 table.string("contacts");
-                table.string("info");
             })
             .then(() => {
                 return Promise.all(
