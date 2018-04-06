@@ -164,58 +164,36 @@
       <!-- style-->
       <div class="row">
         <div class="col-lg-6 align-self-center g-mb-60">
-          <img class="img-fluid" src="../assets/img/servizi/service3.jpg" alt="Image service` + service.id + ` Description">
+          <img id="service_image" class="img-fluid" alt="Image service + service.id +  Description">
         </div>
         <div class="col-lg-6 align-self-center g-mb-60">
 
           <div class="u-heading-v2-2--bottom g-brd-primary g-mb-30 text-center">
-            <br><br><h2 class="text-uppercase u-heading-v2__title g-font-weight-700 mb-0">Nome servizio</h2>
+            <br><br><h2 id="service_name" class="text-uppercase u-heading-v2__title g-font-weight-700 mb-0">Nome servizio</h2>
           </div>
           <div class="mb-5 text-center">
-            <p class="mb-5">L'educatore professionale è l'operatore sociale e sanitario che attua specifici progetti educativi e riabilitativi, nell'ambito di un progetto terapeutico, volto a uno sviluppo equilibrato della personalità con obiettivi educativo-relazionali in un contesto di partecipazione e recupero alla vita quotidiana; cura il positivo inserimento o reinserimento psico-sociale dei soggetti in difficoltà.</p>
+            <p id="service_description" class="mb-5">L'educatore professionale è l'operatore sociale e sanitario che attua specifici progetti educativi e riabilitativi, nell'ambito di un progetto terapeutico, volto a uno sviluppo equilibrato della personalità con obiettivi educativo-relazionali in un contesto di partecipazione e recupero alla vita quotidiana; cura il positivo inserimento o reinserimento psico-sociale dei soggetti in difficoltà.</p>
           </div>
 
           <div class="g-mb-3">
             <i class="g-pos-rel g-mt-1 mr-2 fa fa-envelope-o u-line-icon-pro"></i>
-            <a>Email:</a>
+            <a id="service_email">Email:</a>
           </div>
 
           <section class="container g-py-40">
             <div class="row g-mb-20">
               <div class="mb-5 col-md-6 text-center">
                 <h3 class="h5 g-color-black mb-3">Professionisti:</h3>
-                <ul class="list-unstyled g-color-black-v5 g-font-size-13 g-mb-0">
-                  <li class="g-mb-3">
-                    <i class="g-pos-rel g-mt-1 mr-2 fa fa-user-circle-o u-line-icon-pro"></i>
-                    <a href="person.html">tizio 1</a>
-                  </li>
-                  <li class="g-mb-3">
-                    <i class="g-pos-rel g-mt-1 mr-2 fa fa-user-circle-o u-line-icon-pro"></i>
-                    <a href="person.html">tizio 2</a>
-                  </li>
-                  <li class="g-mb-3">
-                    <i class="g-pos-rel g-top-1 mr-2 fa fa-user-circle-o u-line-icon-pro"></i>
-                    <a href="person.html">tizio 3</a>
-                  </li>
+                <ul id="people" class="list-unstyled g-color-black-v5 g-font-size-13 g-mb-0">
+
                 </ul>
                 </div>
 
                 <div class="col-md-6 g-mb-10 text-center">
                   <div class="mb-5">
                     <h3 class="h5 g-color-black mb-3">Sedi:</h3>
-                    <ul class="list-unstyled g-color-black-v5 g-font-size-13 g-mb-0">
-                      <li class="g-mb-3">
-                        <i class="g-pos-rel g-mt-1 mr-2 fa fa-map-marker u-line-icon-pro"></i>
-                        <a href="sede.html">sede 1</a>
-                      </li>
-                      <li class="g-mb-3">
-                        <i class="g-pos-rel g-mt-1 mr-2 fa fa-map-marker u-line-icon-pro"></i>
-                        <a href="sede.html">sede 2</a>
-                      </li>
-                      <li class="g-mb-3">
-                        <i class="g-pos-rel g-top-1 mr-2 fa fa-map-marker u-line-icon-pro"></i>
-                        <a href="sede.html">sede 3</a>
-                      </li>
+                    <ul id="locations" class="list-unstyled g-color-black-v5 g-font-size-13 g-mb-0">
+
                     </ul>
                   </div>
                 </div>
@@ -534,116 +512,46 @@ slider.setup("masterslider", {
   view: "basic"
 });
 
-jQuery(document).ready(function() {
-  var locations = [];
-  var location_x_service = [];
-  var s_locations = [];
-  var s2_locations = [];
+id = getAllUrlParams().id;
 
-  fetch('/services')
-  .then(function(response){
-    return response.json();
-  })
-  .then(function(data) {
-    s_locations = data.map(varie_cose);
-
-    function varie_cose (service) {
-      return fetch('/locationsofservice/' + service.id)
-      .then(function(response){
+fetch(`/services/` + id)
+    .then(function(response) {
         return response.json();
-      })
-      .then(function(data) {
-        locations_x_service = data.map(varie_cose_due);
-        console.log(locations_x_service);
-
-        function varie_cose_due (loc_response) {
-          //where loc_response.id means the id of each location in which we can find the service
-          if (!locations.includes(loc_response.id)){
-            //                        console.log("in IF. loc_response.id and locations: " + loc_response.id + " / " + locations)
-            locations.push(loc_response.id);
-            $("#filter_controls").append('<li id="filter_action" class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter=".' + loc_response.id + '">' + loc_response.name + '</li>');
-            console.log("location_found: " + loc_response.id + " " + loc_response.name);
-          }
-          return loc_response.id;
-        };
-
-        return locations_x_service;
-      })
-      .then( location_x_service => {
-        var loc_strgfy = location_x_service.join(' ');
-        console.log("stringfied " + loc_strgfy);
-        returned = loc_strgfy;
-        return loc_strgfy;
-      })
-    };
-    return s_locations;
-  })
-  .then(function(s_locations) {
-    Promise.all(s_locations).then(function(s_locations) {
-      fetch('/services')
-      .then(function(response){
-        //            console.log(response);
-        return response.json();
-      })
-      .then(function(data) {
-        console.log("mapping services data");
-        data.map(add_service);
-        // initialization of cubeportfolio
-        //$.HSCore.components.HSCubeportfolio.init('.cbp');
-        $.HSCore.components.HSCubeportfolio.init('.cbp');
-        // initialization of popups
-        $.HSCore.components.HSModalWindow.init('[data-modal-target]');
-        // initialization of carousel
-        $.HSCore.components.HSCarousel.init('.js-carousel');
-        console.log("Cubeportfolio, Modal Window and Carusel initialised");
-      });
-      function add_service(service) {
-        var id = service.id;
-        console.log("s_locations in append: " + s_locations[id - 1])
-        $("#services_list").append(`
-          <div class="cbp-item ` + s_locations[id - 1] + `">
-          <div class="u-block-hover g-parent">
-          <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../assets/img/servizi/service` + service.id + `.jpg" alt="Image ` + service.id + ` description">
-          </div>
-          <div class="u-shadow-v19 g-bg-white text-center g-pa-25 mb-1">
-          <h3 class="btn u-btn-primary" href="#modal` + service.id + `" data-modal-target="#modal` + service.id + `" data-modal-effect="fadein">` + service.name + `
-          </a></h3>
-          <!-- modal window -->
-          <div id="modal` + service.id + `" class="text-left g-max-width-900 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
-          <button type="button" class="close" onclick="Custombox.modal.close();">
-          <i class="hs-icon hs-icon-close"></i>
-          </button>
-          <!-- Modal style-->
-          <div class="row">
-          <div class="col-lg-6 align-self-center g-mb-60">
-          <img class="img-fluid" src="../assets/img/servizi/service` + service.id + `.jpg" alt="Image service` + service.id + ` Description">
-          </div>
-          <div class="col-lg-6 align-self-center g-mb-60">
-          <div class="mb-2">
-          <h2 class="h3 g-color-black text-uppercase mb-2">` + service.name + `</h2>
-          <div class="d-inline-block g-width-35 g-height-2 g-bg-primary mb-2"></div>
-          </div>
-          <div class="mb-5">
-          <p class="mb-5">` + service.info + `</p>
-          <p>Siamo presenti nelle seguenti <a href="dove_siamo.html" title="visualizza dove siamo">sedi</a>:</p>
-          <ul id="service_locations" class="list-unstyled g-font-size-13 mb-0">
-
-          </ul>
-          </div>
-          <a class="btn btn-md u-btn-primary g-font-size-default g-rounded-50 g-py-10" href="il_nostro_team.html">Scopri il personale</a>
-          </div>
-          </div>
-          <!-- end Modal style-->
-          </div>
-          <!-- End modal window -->
-          <p class="mb-0">` + service.location + `</p>
-          </div>
-          </div>`)
-        }
-      })
     })
-
-  });
+    .then(function(data) {
+        $('#service_name').text(data[0].name);
+        $('#service_description').text(data[0].description);
+        $('service_#email').text(data[0].contacts);
+        $('#service_image').attr("src", "../assets/img/servizi/service" + id + ".jpg" );
+    });
+fetch(`/locationsofservice/` + id)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        data.forEach(function(location) {
+            $('#locations').append(`
+                <li class="g-mb-3">
+                  <i class="g-pos-rel g-mt-1 mr-2 fa fa-map-marker u-line-icon-pro"></i>
+                  <a href="sede.html?id=` + location.id + `">` + location.name + `</a>
+                </li>`
+            );
+        });
+    });
+fetch(`/peopleinservice/` + id)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        data.forEach(function(people) {
+            $('#people').append(`
+                <li class="g-mb-3">
+                  <i class="g-pos-rel g-top-1 mr-2 fa fa-user-circle-o u-line-icon-pro"></i>
+                  <a href="person.html?id=` + people.id + `">` + people.name + `</a>
+                </li>`
+            );
+        });
+    });
 
 
 
