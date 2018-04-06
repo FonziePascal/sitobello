@@ -277,20 +277,20 @@ app.use(bodyParser.urlencoded({extended: true, inflate: true}));
 
 /* retrieve data about all the locations return result as a JSON array */
 app.get("/locations", function(request, response) {
-    let myQuery = sqlDb("locations")
-        .then(result => {
-            response.send(JSON.stringify(result));
-        })
+    let myQuery = sqlDb("locations").orderByRaw('name')
+    .then(result => {
+        response.send(JSON.stringify(result));
+    })
 })
 
 /* given a location id, retrieve all data about that location
  return result as a JSON array with a single element */
 app.get("/locations/:id", function(request, response) {
     let myQuery = sqlDb("locations");
-    myQuery.where("id", request.params.id)
-        .then(result => {
-            response.send(JSON.stringify(result));
-        })
+    myQuery.where("id", request.params.id).orderByRaw('name')
+    .then(result => {
+        response.send(JSON.stringify(result));
+    })
 })
 
 /* given a service id, retrieve data of the locations of that service
@@ -298,10 +298,10 @@ app.get("/locations/:id", function(request, response) {
 app.get("/locationsofservice/:id", function(request, response) {
     let myQuery = sqlDb.select().from("locations").whereIn("id", function() {
             this.select("locationId").from("servicesLocations").where("serviceId", request.params.id);
-        })
-        .then(result => {
-            response.send(JSON.stringify(result));
-        })
+        }).orderByRaw('name')
+    .then(result => {
+        response.send(JSON.stringify(result));
+    })
 })
 
 /* retrieve data about all people, return result as a JSON array */
@@ -316,47 +316,47 @@ app.get("/people", function(request, response) {
 return result as a JSON array with a single element */
 app.get("/people/:id", function(request, response) {
     let myQuery = sqlDb("people");
-    myQuery.where("id", request.params.id)
-        .then(result => {
-            response.send(JSON.stringify(result));
-        })
+    myQuery.where("id", request.params.id).orderByRaw('surname, name')
+    .then(result => {
+        response.send(JSON.stringify(result));
+    })
 })
 
 /* given a service id, retrieve data of people working in it
  return result as a JSON array */
 app.get("/peopleinservice/:id", function(request, response) {
     let myQuery = sqlDb.select().from("people").whereIn("id", function() {
-            this.select("personId").from("peopleServices").where("serviceId", request.params.id);
-        })
-        .then(result => {
-            response.send(JSON.stringify(result));
-        })
+        this.select("personId").from("peopleServices").where("serviceId", request.params.id);
+        }).orderByRaw('surname, name')
+    .then(result => {
+        response.send(JSON.stringify(result));
+    })
 })
 
 /* retrieve data about all services, return result as JSON array */
 app.get("/services", function(request,response) {
-    let myQuery = sqlDb("services")
-        .then(result => {
-            response.send(JSON.stringify(result));
-        })
+    let myQuery = sqlDb("services").orderByRaw('name')
+    .then(result => {
+        response.send(JSON.stringify(result));
+    })
 })
 
 /* given a service id, retrieve all data about that service
  return result as a JSON array with a single element */
 app.get("/services/:id", function(request, response) {
     let myQuery = sqlDb("services");
-    myQuery.where("id", request.params.id)
-        .then(result => {
-            response.send(JSON.stringify(result));
-        })
+    myQuery.where("id", request.params.id).orderByRaw('name')
+    .then(result => {
+        response.send(JSON.stringify(result));
+    })
 })
 
 /* retrieve data about locations of services. Return result as a JSON array */
 app.get("/serviceslocations", function(request, response) {
-    let myQuery = sqlDb("serviceslocations")
-        .then(result => {
-            response.send(JSON.stringify(result));
-        })
+    let myQuery = sqlDb("serviceslocations").orderByRaw('name')
+    .then(result => {
+        response.send(JSON.stringify(result));
+    })
 })
 
 /* given a location id, retrieve data of the services located in that location
@@ -364,10 +364,10 @@ app.get("/serviceslocations", function(request, response) {
 app.get("/servicesinlocation/:id", function(request, response) {
     let myQuery = sqlDb.select().from("services").whereIn("id", function() {
             this.select("serviceId").from("servicesLocations").where("locationId", request.params.id);
-        })
-        .then(result => {
-            response.send(JSON.stringify(result));
-        })
+        }).orderByRaw('name')
+    .then(result => {
+        response.send(JSON.stringify(result));
+    })
 })
 
 /* given a person id, retrieve data of services
@@ -375,10 +375,10 @@ app.get("/servicesinlocation/:id", function(request, response) {
 app.get("/servicesbyperson/:id", function(request, response) {
     let myQuery = sqlDb.select().from("services").whereIn("id", function() {
             this.select("serviceId").from("peopleServices").where("personId", request.params.id);
-        })
-        .then(result => {
-            response.send(JSON.stringify(result));
-        })
+        }).orderByRaw('name')
+    .then(result => {
+        response.send(JSON.stringify(result));
+    })
 })
 
 /* retrieve "who we are" data, return result as a JSON array with a single elem */
