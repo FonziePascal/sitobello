@@ -1,1 +1,6 @@
 /* Add here all your css styles (customizations) */
+
+#location_list figure div:hover{
+  background-color: #72c02c;
+  opacity: 0.7;
+}
