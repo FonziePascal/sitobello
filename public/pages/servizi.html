@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="font-primary">
 <head>
-  <title>Charity | Unify - Responsive Website Template</title>
+  <title>La Casa | Servizi</title>
 
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
@@ -9,7 +9,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <!-- Fav-->
-  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="shortcut icon" href="../assets/img/favicon.ico">
 
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway%3A400%2C800%2C500">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:600,700">
@@ -171,16 +171,7 @@
     <!-- End Cube Portfolio Blocks - Filter -->
 
     <!-- Cube Portfolio Blocks - Content -->
-    <div id="services_list" class="cbp" data-controls="#filter_controls" data-animation="quicksand" data-x-gap="30" data-y-gap="30">
-      <!--  class="cbp" data-controls="#filterControls" data-animation="quicksand" data-x-gap="30" data-y-gap="30" data-media-queries="[
-      {'width': 1500, 'cols': 3},
-      {'width': 1100, 'cols': 3},
-      {'width': 800, 'cols': 3},
-      {'width': 480, 'cols': 2},
-      {'width': 300, 'cols': 1}
-      ]"-->
-
-
+    <div id="services_list" class="cbp" data-controls="#filter_controls" data-animation="quicksand" data-x-gap="30" data-y-gap="30" >
     </div>
     <!-- End Cube Portfolio Blocks - Content -->
 
@@ -558,42 +549,14 @@ jQuery(document).ready(function() {
                 console.log("s_locations in append: " + s_locations[id - 1])
                 $("#services_list").append(`
                     <div class="cbp-item ` + s_locations[id - 1] + `">
+                    <a href="servizio.html?id=` + service.id + `">
                         <div class="u-block-hover g-parent">
                             <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../assets/img/servizi/service` + service.id + `.jpg" alt="Image ` + service.id + ` description">
                         </div>
                         <div class="u-shadow-v19 g-bg-white text-center g-pa-25 mb-1">
-                            <h3 class="btn u-btn-primary" href="#modal` + service.id + `" data-modal-target="#modal` + service.id + `" data-modal-effect="fadein">` + service.name + `
-                            </a></h3>
-                            <!-- modal window -->
-                            <div id="modal` + service.id + `" class="text-left g-max-width-900 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
-                                <button type="button" class="close" onclick="Custombox.modal.close();">
-                                    <i class="hs-icon hs-icon-close"></i>
-                                </button>
-                                <!-- Modal style-->
-                                <div class="row">
-                                    <div class="col-lg-6 align-self-center g-mb-60">
-                                        <img class="img-fluid" src="../assets/img/servizi/service` + service.id + `.jpg" alt="Image service` + service.id + ` Description">
-                                    </div>
-                                    <div class="col-lg-6 align-self-center g-mb-60">
-                                        <div class="mb-2">
-                                            <h2 class="h3 g-color-black text-uppercase mb-2">` + service.name + `</h2>
-                                            <div class="d-inline-block g-width-35 g-height-2 g-bg-primary mb-2"></div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <p class="mb-5">` + service.info + `</p>
-                                            <p>Siamo presenti nelle seguenti <a href="dove_siamo.html" title="visualizza dove siamo">sedi</a>:</p>
-                                            <ul id="service_locations" class="list-unstyled g-font-size-13 mb-0">
-
-                                            </ul>
-                                        </div>
-                                        <a class="btn btn-md u-btn-primary g-font-size-default g-rounded-50 g-py-10" href="il_nostro_team.html">Scopri il personale</a>
-                                    </div>
-                              </div>
-                              <!-- end Modal style-->
-                        </div>
-                        <!-- End modal window -->
-                        <p class="mb-0">` + service.location + `</p>
+                            <h3>` + service.name + `</h3>
                     </div>
+                    </a>
                 </div>`)
             }
         })
