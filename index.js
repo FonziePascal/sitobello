@@ -223,7 +223,6 @@ function initWhoWeAreTable() {
 
 // for every table required, check if existing. If not create and populate
 function initDb() {
-    initEventsTable();
     initLocationsTable();
     initPeopleTable();
     initPeopleServicesTable();
