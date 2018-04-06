@@ -514,7 +514,6 @@ fetch(`/people/` + id)
         return response.json();
     })
     .then(function(data) {
-        console.log(data);
         $('#name').append('<a>' + data[0].surname + ' </a>');
         $('#name').append('<a>' + data[0].name + '</a>');
         $('#role').text(data[0].role);
