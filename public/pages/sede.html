@@ -172,7 +172,7 @@
                     <h2 id="name" class="g-color-black mb-1"></h2><br>
                     <div class="row">
                         <div class="col-lg-5 align-self-center g-mb-30">
-                            <img class="img-fluid" src="../assets/img/sedi/sede4.jpg" alt="Image service` + service.id + ` Description">
+                            <img id="location_image" class="img-fluid" alt="Image location` + location.id + ` Description">
                         </div>
                         <div class="col-lg-6 align-self-center g-mb-30" style="text-align:justify;">
                             <a id="description"></a>
@@ -533,7 +533,7 @@ fetch(`/locations/` + id)
         $('#address').append('<a>' + data[0].address + ', </a>');
         $('#address').append('<a>' + data[0].city + '</a>');
         $('#phone').text(data[0].phone);
-        $('#person_image').attr("src", "../assets/img/sedi/sede" + id + ".jpg" );
+        $('#location_image').attr("src", "../assets/img/sedi/sede" + id + ".jpg" );
     }).catch(function(err) {
         console.log(err);
         // Gets called if request fails, or even if .then fails
