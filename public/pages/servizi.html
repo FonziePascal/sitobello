@@ -481,22 +481,22 @@ jQuery(document).ready(function() {
     var location_x_service = [];
     var s_locations = [];
 
-    fetch('/services')
+    fetch('/servicesnotordered')
     .then(function(response){
         return response.json();
     })
     .then(function(data) {
-        s_locations = data.map(varie_cose);
+        s_locations = data.map(locations_of_service);
 
-        function varie_cose (service) {
+        function locations_of_service (service) {
             return fetch('/locationsofservice/' + service.id)
             .then(function(response){
                 return response.json();
             })
             .then(function(data) {
-                locations_x_service = data.map(varie_cose_due);
+                locations_x_service = data.map(build_filter_get_loc_id);
 
-                function varie_cose_due (loc_response) {
+                function build_filter_get_loc_id (loc_response) {
                     //where loc_response.id means the id of each location in which we can find the service
                     if (!locations.includes(loc_response.id)){
 //                        console.log("in IF. loc_response.id and locations: " + loc_response.id + " / " + locations)
@@ -511,7 +511,6 @@ jQuery(document).ready(function() {
             })
             .then( location_x_service => {
                 var loc_strgfy = location_x_service.join(' ');
-                    console.log("stringfied " + loc_strgfy);
                     returned = loc_strgfy;
                 return loc_strgfy;
             })
@@ -546,7 +545,6 @@ jQuery(document).ready(function() {
             });
             function add_service(service) {
                 var id = service.id;
-                console.log("s_locations in append: " + s_locations[id - 1])
                 $("#services_list").append(`
                     <div class="cbp-item ` + s_locations[id - 1] + `">
                     <a href="servizio.html?id=` + service.id + `">
