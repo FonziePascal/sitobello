@@ -151,8 +151,8 @@
             <a class="u-link-v5 g-color-white g-color-primary--hover" href="servizi.html">Servizi</a>
             <i class="fa fa-angle-right g-ml-7"></i>
           </li>
-          <li class="list-inline-item g-mr-7">
-            <a class="u-link-v5 g-color-white g-color-primary--hover" href="#!">Servizio</a>
+          <li class="list-inline-item g-color-primary">
+            <span id="page"></span>
           </li>
         </ul>
       </div>
@@ -171,25 +171,25 @@
           <div class="u-heading-v2-2--bottom g-brd-primary g-mb-30 text-center">
             <br><br><h2 id="service_name" class="text-uppercase u-heading-v2__title g-font-weight-700 mb-0">Nome servizio</h2>
           </div>
-          <div class="mb-5 text-center">
-            <p id="service_description" class="mb-5">L'educatore professionale è l'operatore sociale e sanitario che attua specifici progetti educativi e riabilitativi, nell'ambito di un progetto terapeutico, volto a uno sviluppo equilibrato della personalità con obiettivi educativo-relazionali in un contesto di partecipazione e recupero alla vita quotidiana; cura il positivo inserimento o reinserimento psico-sociale dei soggetti in difficoltà.</p>
+          <div class="mb-5 text-justify">
+            <p id="service_description" class="mb-5"></p>
           </div>
 
           <div class="g-mb-3">
             <i class="g-pos-rel g-mt-1 mr-2 fa fa-envelope-o u-line-icon-pro"></i>
-            <a id="service_email">Email:</a>
+            <a id="service_email"></a>
           </div>
 
           <section class="container g-py-40">
             <div class="row g-mb-20">
-              <div class="mb-5 col-md-6 text-center">
+              <div class="mb-5 col-md-6 text-justify">
                 <h3 class="h5 g-color-black mb-3">Professionisti:</h3>
                 <ul id="people" class="list-unstyled g-color-black-v5 g-font-size-13 g-mb-0">
 
                 </ul>
                 </div>
 
-                <div class="col-md-6 g-mb-10 text-center">
+                <div class="col-md-6 g-mb-10 text-justify">
                   <div class="mb-5">
                     <h3 class="h5 g-color-black mb-3">Sedi:</h3>
                     <ul id="locations" class="list-unstyled g-color-black-v5 g-font-size-13 g-mb-0">
@@ -515,9 +515,10 @@ fetch(`/services/` + id)
         return response.json();
     })
     .then(function(data) {
+        $('#page').text(data[0].name);
         $('#service_name').text(data[0].name);
         $('#service_description').text(data[0].description);
-        $('service_#email').text(data[0].contacts);
+        $('#service_email').text(data[0].contacts);
         $('#service_image').attr("src", "../assets/img/servizi/service" + id + ".jpg" );
     });
 fetch(`/locationsofservice/` + id)
@@ -543,7 +544,7 @@ fetch(`/peopleinservice/` + id)
             $('#people').append(`
                 <li class="g-mb-3">
                   <i class="g-pos-rel g-top-1 mr-2 fa fa-user-circle-o u-line-icon-pro"></i>
-                  <a href="person.html?id=` + people.id + `">` + people.name + `</a>
+                  <a href="person.html?id=` + people.id + `">` + people.name + ` ` + people.surname + `, ` + people.role + `</a>
                 </li>`
             );
         });

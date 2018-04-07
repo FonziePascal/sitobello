@@ -151,8 +151,8 @@
             <a class="u-link-v5 g-color-white g-color-primary--hover" href="il_nostro_team.html">Il Nostro Team</a>
             <i class="fa fa-angle-right g-ml-7"></i>
           </li>
-          <li class="list-inline-item g-mr-7">
-            <a class="u-link-v5 g-color-white g-color-primary--hover" href="#!">Professionista</a>
+          <li class="list-inline-item g-color-primary">
+            <span id="page"></span>
           </li>
         </ul>
       </div>
@@ -170,7 +170,7 @@
                     <div class="col-lg-5 align-self-center g-mb-30">
                         <img id="person_image" class="img-fluid" alt="Image service` + service.id + ` Description">
                     </div>
-                    <div id="basicInfo" class="col-lg-6 align-self-center g-mb-30">
+                    <div id="basicInfo" class="col-lg-6 align-self-center g-mb-30" style="text-align:justify;">
 
                       </div>
                     </div>
@@ -194,7 +194,7 @@
                   <ul class="list-unstyled g-color-black-v5 g-font-size-13 g-mb-0">
                     <li class="g-mb-3">
                       <i class="g-pos-rel g-mt-1 mr-2 fa fa-envelope-o u-line-icon-pro"></i>
-                      <a id="email">Email</a>
+                      <a id="email"></a>
                     </li>
                   </ul>
                 </div>
@@ -514,6 +514,7 @@ fetch(`/people/` + id)
         return response.json();
     })
     .then(function(data) {
+        $('#page').text(data[0].surname +' '+ data[0].name);
         $('#name').append('<a>' + data[0].surname + ' </a>');
         $('#name').append('<a>' + data[0].name + '</a>');
         $('#role').text(data[0].role);

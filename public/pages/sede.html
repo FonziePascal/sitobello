@@ -155,8 +155,8 @@
             <a class="u-link-v5 g-color-white g-color-primary--hover" href="dove_siamo.html">Dove Siamo</a>
             <i class="fa fa-angle-right g-ml-7"></i>
           </li>
-          <li class="list-inline-item g-mr-7">
-            <a class="u-link-v5 g-color-white g-color-primary--hover" href="#!">Sedi</a>
+          <li class="list-inline-item g-color-primary">
+            <span id="page"></span>
           </li>
         </ul>
       </div>
@@ -169,13 +169,13 @@
               <div class="row g-mb-20">
                 <div class="col-md-8 g-mb-30">
                   <div class="mb-8">
-                    <h2 id="name" class="g-color-black mb-1">Nome del posto</h2><br>
+                    <h2 id="name" class="g-color-black mb-1"></h2><br>
                     <div class="row">
                         <div class="col-lg-5 align-self-center g-mb-30">
                             <img class="img-fluid" src="../assets/img/sedi/sede4.jpg" alt="Image service` + service.id + ` Description">
                         </div>
-                        <div class="col-lg-6 align-self-center g-mb-30">
-                            <a id="description">Descrizione del posto: L'educatore professionale è l'operatore sociale e sanitario che attua specifici progetti educativi e riabilitativi, nell'ambito di un progetto terapeutico, volto a uno sviluppo equilibrato della personalità con obiettivi educativo-relazionali in un contesto di partecipazione e recupero alla vita quotidiana; cura il positivo inserimento o reinserimento psico-sociale dei soggetti in difficoltà.</a>
+                        <div class="col-lg-6 align-self-center g-mb-30" style="text-align:justify;">
+                            <a id="description"></a>
                           </div>
                         </div>
                     </div>
@@ -202,11 +202,11 @@
                         </li>
                         <li class="g-mb-3">
                           <i class="g-pos-rel g-mt-1 mr-2 fa fa-envelope-o u-line-icon-pro"></i>
-                          <a href="mailto:responsabile@lacasa.it">Email</a>
+                          <a id="email"></a>
                         </li>
                         <li class="g-mb-3">
                           <i class="g-pos-rel g-top-1 mr-2 fa fa-phone u-line-icon-pro"></i>
-                          <a id="phone">Numero telefono</a>
+                          <a id="phone"></a>
                         </li>
                       </ul>
                     </div>
@@ -526,6 +526,7 @@ fetch(`/locations/` + id)
         return response.json();
     })
     .then(function(data) {
+        $('#page').text(data[0].name);
         $('#name').text(data[0].name);
         $('#description').text(data[0].basicInfo);
         $('#email').text(data[0].email);

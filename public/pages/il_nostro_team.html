@@ -145,8 +145,8 @@
               <a class="u-link-v5 g-color-white g-color-primary--hover" href="../index.html">Home</a>
               <i class="fa fa-angle-right g-ml-7"></i>
             </li>
-            <li class="list-inline-item g-mr-7">
-              <a class="u-link-v5 g-color-white g-color-primary--hover" href="#!">Il nostro Team</a>
+            <li class="list-inline-item g-color-primary">
+              <span href="il_nostro_team.html">Il nostro Team</span>
             </li>
           </ul>
         </div>
@@ -492,16 +492,7 @@
 
                           <span class="d-block g-color-gray-dark-v4 g-font-size-18 g-mb-10">
                             ${person.role} </span>
-
-                          <p class="g-mb-20">${person.basicInfo}</p>
-
-                          <ul class="list-inline g-mx-minus-20 mb-20 g-pl-7">
-                            <li class="list-inline-item info-v5-4__action g-color-gray-dark-v5 g-pr-20 g-pl-15">
-                              <i class="align-middle g-font-size-16 g-transition-0_3 g-mr-7 icon-communication-061 u-line-icon-pro"></i>
-                              <a class="g-color-gray-dark-v5 g-color-primary--hover g-text-underline--none--hover" href="#!">${person.email}</a>
-                            </li>
-                          </ul>
-                          <a href="person.html" class="btn btn-lg u-btn-primary g-font-weight-600 g-font-size-12 text-uppercase g-mx-5 g-mt-10">Scopri di più</a>
+                          <a href="person.html?id=` + person.id + `" class="btn btn-lg u-btn-primary g-font-weight-600 g-font-size-12 text-uppercase g-mx-5 g-mt-10">Scopri di più</a>
                         </div>
                       </div>
                       <!-- End Article Content -->
