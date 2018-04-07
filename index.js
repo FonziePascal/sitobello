@@ -308,6 +308,13 @@ app.get("/services", function(request,response) {
         response.send(JSON.stringify(result));
     })
 })
+/* retrieve data about all services, return result as JSON array */
+app.get("/servicesnotordered", function(request,response) {
+    let myQuery = sqlDb("services")
+    .then(result => {
+        response.send(JSON.stringify(result));
+    })
+})
 
 /* given a service id, retrieve all data about that service
  return result as a JSON array with a single element */
