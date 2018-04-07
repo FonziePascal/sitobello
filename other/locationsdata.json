@@ -1,42 +1,42 @@
 [
 {
-  "name": "Piubega",
-  "basicInfo": " ",
-  "mail": "piubega@pms.it",
-  "address": "via dal cazzo, 1",
-  "city": "Piubega",
-  "phone": "+39 348 2343"
-},
-{
-  "name": "Aci Catena",
-  "basicInfo": " ",
-  "mail": "mirandola@pms.it",
-  "address": "via dal cazzo, 1",
-  "city": "Piubega",
-  "phone": "+39 348 2343"
+  "name": "Aci Bonaccorsi",
+  "basicInfo": "Quella di Aci Bonaccorsi è la sede sorta più di recente, grazie al sostegno della scuola pubblica primaria della zona. Durante la settimana nel centro sono tenute dai nostri educatori attività pomeridiane di arteterapia e musicoterapia.",
+  "mail": "info.acibonaccorsi@lacasa.it",
+  "address": "Via Giuseppe Garibaldi, 33",
+  "city": "95020, Aci Bonaccorsi (CT)",
+  "phone": "095 567890"
 },
 {
   "name": "Aci Castello",
-  "basicInfo": "Sede storica del PMS aperta dal 1965, da sempre apripista nel campo della chirurgia generale in sicilia. La struttura polispecialistica, che ha ottenuto sin dal 2004 la certificazione di qualità ISO9001:2000 per l'intero processo produttivo e che ne mantiene il rinnovo con le periodiche verifiche. Nel 2006 ha ottenuto anche la certificazione UKAS valida fno al 2009. È caratterizzata da una filosofia che privilegia, nell'organizzazione ospedaliera, il rapporto umano con il Paziente coniugando l'efficacia clinica con l'efficienza gestionale.",
-  "mail": "siracusa@pms.it",
-  "address": "via dal cazzo, 1",
-  "city": "Piubega",
-  "phone": "+39 348 2343"
+  "basicInfo": "Aci Castello è una delle sedi principali dell'associazione La Casa. Particolarità di Aci Castello è offrire, oltre a corsi pomeridiani di nuoto e pet therapy con delfini, il servizio di estetista con cadenza settimanale. La nostra Francesca Bianchi, da sempre nostra laboriosa sostenitrice, estetista professionista, ha infatti deciso di dedicarsi gratuitamente alla cura delle ragazze frequentanti il centro, rivolgendole sedute di bellezza accompagnate dalla sua piacevole e delicata compagnia.",
+  "mail": "info.acicastello@lacasa.it",
+  "address": "Via XXI Aprile, 62",
+  "city": "95021 Aci Castello (CT)",
+  "phone": "095 126530"
 },
 {
-  "name": "Acireale",
-  "basicInfo": "Realizzata sulle colline mantovane, la sede di Piubega inizia la sua attività nel 1990. Nel corso degli anni la clinica cambia lentamente pelle, trasformandosi da ospedale delle nascite a struttura polispecialistica d’eccellenza, con tecnologie d’avanguardia e personale altamente qualificato. Nel 2002 dà avvio ad una forte riqualificazione, proiettandola al centro del panorama sanitario privato italiano. Nel 2006 avviene l’inaugurazione della struttura totalmente rinnovata: il   raddoppio della superficie garantisce un migliore comfort. Nel 2010 la sede del PMS di Piubega continua ad innovare le proprie attrezzature acquisendo una Aquilion One, la TC più avanzata al mondo, che consente di ridurre drasticamente i tempi diagnostici e le dosi di radiazioni.",
-  "mail": "piubega@pms.it",
-  "address": "via dal cazzo, 1",
-  "city": "Piubega",
-  "phone": "+39 348 2343"
+  "name": "Aci Catena",
+  "basicInfo": "Animata sede de La Casa, il centro di Aci Catena ha il privilegio di essere l'unica realtà della sicilia orientale ad offrire il servizio di pet therapy con i cavalli, conosciuta come ippoterapia. Ciò ha portato il centro, seppure situato in uno dei comuni minori, ad essere una struttura di spicco e di grande fervore. Tale sede propone anche attività di arteterapia e musicoterapia per bambini, ragazzi e le loro famiglie.",
+  "mail": "info.acicatena@lacasa.it",
+  "address": "Via Libertà, 20",
+  "city": "95022 Aci Catena (CT)",
+  "phone": "095 900457"
 },
 {
   "name": "Aci Sant'Antonio",
-  "basicInfo": "Realizzata sulle colline mantovane, la sede di Piubega inizia la sua attività nel 1990. Nel corso degli anni la clinica cambia lentamente pelle, trasformandosi da ospedale delle nascite a struttura polispecialistica d’eccellenza, con tecnologie d’avanguardia e personale altamente qualificato. Nel 2002 dà avvio ad una forte riqualificazione, proiettandola al centro del panorama sanitario privato italiano. Nel 2006 avviene l’inaugurazione della struttura totalmente rinnovata: il   raddoppio della superficie garantisce un migliore comfort. Nel 2010 la sede del PMS di Piubega continua ad innovare le proprie attrezzature acquisendo una Aquilion One, la TC più avanzata al mondo, che consente di ridurre drasticamente i tempi diagnostici e le dosi di radiazioni.",
-  "mail": "piubega@pms.it",
-  "address": "via dal cazzo, 1",
-  "city": "Piubega",
-  "phone": "+39 348 2343"
+  "basicInfo": "In questa sede dell'associazione La Casa gli educatori conducono con i bambini e i ragazzi attività di arteterapia e di musicoterapia, permettendo loro di trascorrere dei pomeriggi ricreativi di svago e creatività.",
+  "mail": "info.acisantantonio@lacasa.it",
+  "address": "Via Vittorio Emannuele, 86",
+  "city": "95025 Aci Sant'Antonio (CT)",
+  "phone": "095 56211"
+},
+{
+  "name": "Acireale",
+  "basicInfo": "Culla dell'associazione, la sede di Acireale ci ha visti muovere i primi passi nella costruzione di una preziosa rete di rapporti professionali e di amicizia che sono oggi le fondamenta de La Casa. Essa rimane ad oggi la sede più vivace che ospita la maggior parte delle nostre attività: dagli ormai collaudati laboratori di arteterapia e musicoterapia, ai più recenti corsi in piscina. La novità più recente, avvenuta dopo l'ampliamento del centro con una zona all'aperto, è l'introduzione di attività di pet therapy per i bambini e i ragazzi.",
+  "mail": "info.acireale@lacasa.it",
+  "address": "Via Lazzaretto, 45",
+  "city": "95024 Acireale (CT)",
+  "phone": "095 708520"
 }
 ]

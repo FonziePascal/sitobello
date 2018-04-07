@@ -529,7 +529,7 @@ fetch(`/locations/` + id)
         $('#page').text(data[0].name);
         $('#name').text(data[0].name);
         $('#description').text(data[0].basicInfo);
-        $('#email').text(data[0].email);
+        $('#email').text(data[0].mail);
         $('#address').append('<a>' + data[0].address + ', </a>');
         $('#address').append('<a>' + data[0].city + '</a>');
         $('#phone').text(data[0].phone);

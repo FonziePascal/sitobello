@@ -1,46 +1,46 @@
 [
   {
-    "personId":1,
+    "personId": 1,
     "serviceId": 1
   },
   {
-    "personId":1,
+    "personId": 1,
     "serviceId": 2
   },
   {
-    "personId":1,
+    "personId": 1,
     "serviceId": 5
   },
   {
-    "personId":2,
+    "personId": 2,
     "serviceId": 1
   },
   {
-    "personId":2,
+    "personId": 2,
     "serviceId":4
   },
   {
-    "personId":3,
-    "serviceId": 1
-  },
-  {
-    "personId":3,
-    "serviceId": 2
-  },
-  {
-    "personId":3,
-    "serviceId": 3
-  },
-  {
-    "personId":3,
+    "personId":2,
     "serviceId": 5
   },
   {
-    "personId":4,
+    "personId": 3,
+    "serviceId": 3
+  },
+  {
+    "personId": 4,
+    "serviceId": 2
+  },
+  {
+    "personId": 5,
+    "serviceId": 1
+  },
+  {
+    "personId": 5,
     "serviceId": 4
   },
   {
     "personId":5,
-    "serviceId": 4
+    "serviceId": 5
   }
 ]

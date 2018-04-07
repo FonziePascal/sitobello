@@ -1,57 +1,58 @@
 [
   {
     "serviceId": 1,
-    "locationId": 1,
-    "locationName":"Piubega"
+    "locationId": 1
   },
   {
     "serviceId": 1,
-    "locationId": 2,
-    "locationName":"Aci Catena"
+    "locationId": 3
+  },
+  {
+    "serviceId": 1,
+    "locationId": 4
+  },
+  {
+    "serviceId": 1,
+    "locationId": 5
   },
   {
     "serviceId": 2,
-    "locationId": 2,
-    "locationName":"Aci Catena"
+    "locationId": 2
   },
   {
     "serviceId": 2,
-    "locationId": 3,
-    "locationName":"Aci Castello"
+    "locationId": 5
   },
   {
     "serviceId": 3,
-    "locationId": 2,
-    "locationName":"Aci Catena"
+    "locationId": 2
   },
   {
     "serviceId": 4,
-    "locationId": 3,
-    "locationName":"Aci Castello"
+    "locationId": 2
   },
   {
     "serviceId": 4,
-    "locationId": 1,
-    "locationName":"Aci Castello"
+    "locationId": 3
   },
   {
     "serviceId": 4,
-    "locationId": 3,
-    "locationName":"Aci Castello"
-  },
-  {
-    "serviceId": 4,
-    "locationId": 4,
-    "locationName":"Acireale"
-  },
-  {
-    "serviceId": 4,
-    "locationId": 5,
-    "locationName":"Aci Sant'Antonio"
+    "locationId": 5
   },
   {
     "serviceId": 5,
-    "locationId": 1,
-    "locationName":"Piubega"
+    "locationId": 1
+  },
+  {
+    "serviceId": 5,
+    "locationId": 3
+  },
+  {
+    "serviceId": 5,
+    "locationId": 4
+  },
+  {
+    "serviceId": 5,
+    "locationId": 5
   }
 ]
