@@ -3,35 +3,35 @@
     "name": "Matteo",
     "surname": "Amiati",
     "role": "Educatore",
-    "basicInfo": "L'educatore professionale è l'operatore sociale e sanitario che attua specifici progetti educativi e riabilitativi, nell'ambito di un progetto terapeutico, volto a uno sviluppo equilibrato della personalità con obiettivi educativo-relazionali in un contesto di partecipazione e recupero alla vita quotidiana; cura il positivo inserimento o reinserimento psico-sociale dei soggetti in difficoltà.",
+    "basicInfo": "Il veterano del team degli educatori è Matteo, da sempre motore di qualsiasi nuova iniziativa e pronto a giocarsi in nuove sfide. Le sfide anzi non lo spaventano affatto, come quella che ha dovuto affrontare all'età di 10 anni nel dover superare la paura dell'acqua. Adesso è proprio lui che, affiancando Luca Cole, aiuta i bambini e i ragazzi a conquistare confidenza con l'ambiente acquatico e trasformare tale confidenza in strumento riabilitativo e di crescita. Matteo collabora inoltre alle attività di arteterapia e musicoterapia.",
     "email": "matteo.miati@lacasa.it"
   },
   {
     "name": "Susanna",
     "surname": "Pertini",
     "role": "Educatore",
-    "basicInfo": "La nostra specialista offre un servizio di riabilitazione e sostegno per bambini e ragazzi con disturbi di apprendimento e del linguaggio. Unisce più discipline, come la psicologia e la logopedia, in maniera innovativa per offrire un servizio di cura ai disturbi di apprendimento.",
+    "basicInfo": "Susanna gestisce i laboratori di arteterapia e musicoterapia delle nostre sedi. Dopo essersi laureata in Scienze dell'Educazione all'Università degli Studi di Palermo, ha conseguito il diploma di secondo livello dell'Accademia di Belle Arti di Brera ''Teoria e Pratica della Terapeutica Artistica'', che le ha consentito di diventare esperta del linguaggio visivo e della terapeuticità artistica. Collabora inoltre alle attività di pet therapy svolte nelle sedi di Acireale, Aci Castello ed Aci Catena.",
     "email": "susanna.pertini@lacasa.com"
   },
   {
     "name": "Francesca",
     "surname": "Bianchi",
     "role": "Estetista",
-    "basicInfo": "null",
+    "basicInfo": "Francesca è una giovane estetista professionista che ha deciso di dedicarsi gratuitamente alla cura delle ragazze frequentanti il centro, rivolgendole sedute di bellezza accompagnate dalla sua piacevole e delicata compagnia. I servizi che mette a disposizione sono manicure, pedicure e depilazione.",
     "email": "francesca.bianchi@lacasa.com"
   },
   {
     "name": "Luca",
     "surname": "Cole",
-    "role": "Allenatore sportivo",
-    "basicInfo": "L'allenatore sportivo si occupa della preparazione psico-fisica di squadre o di singoli atleti. Il suo compito consiste nel far acquisire le tecniche di una specifica disciplina sportiva a principianti o nell'ottimizzare la prestazione sportiva.",
+    "role": "Istruttore di nuoto",
+    "basicInfo": "Luca è un Allievo Istruttore F.I.N. che nel 2010 ha ottenuto il brevetto per Istruttore di Nuoto F.I.N.P. (Federazione Italiana Nuoto Paralimpico) e F.I.S.D.I.R. (Federazione Italiana Sport Disabilità Intellettiva Relazionale). Con l'aiuto di Matteo Amiati gestisce i corsi di nuoto offerti nelle nostre sedi di Acireale e Aci Castello. Grande appassionato di sport e amante delle discipline acquatiche, Luca è promotore del nuoto paralimpico in Sicilia, portando ogni anno decine di atleti ai campionati nazionali.",
     "email": "luca.cole@lacasa.it"
   },
   {
     "name": "Carlo",
     "surname": "Zanoni",
     "role": "Educatore",
-    "basicInfo": "Lo psicoterapeuta incontra una persona, una famiglia o un gruppo di persone con l’obiettivo di risolvere i propri problemi relativi alla sfera del comportamento, delle emozioni, delle credenze o del proprio modo di pensare. La nostra specialista lavora spesso a contatto con artisti e educatori per offrire servizi cone art-terapy e pet-terapy.",
+    "basicInfo": "Giovane specializzato nella riabilitazione e assistenza alla disabilità nell'età evolutiva, Carlo coordina le attività di pet therapy con cani, cavalli e delfini nelle nostre sedi. Inoltre è coinvolto nel laboratori di musicoterapia e arteterapia.",
     "email": "carlo.zanoni@lacasa.it"
   }
 ]
