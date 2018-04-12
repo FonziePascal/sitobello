@@ -396,10 +396,10 @@ app.post('/contactForm', function(request, response) {
 
     // setup e-mail data with unicode symbols
     var mailOptions = {
-        from: '"' + request.body.name + '" <cooperativaandy@gmail.com>', // sender address
+        from: '"' + request.body.name + '" <lacasaperilmondo@gmail.com>', // sender address
         to: request.body.mail, // list of receivers
         subject: request.body.subject, // Subject line
-        html: '<p>Message: ' + request.body.message + '</p>' // html body
+        html: '<p>Message: ' + request.body.message + '</p><p>Phone: ' + request.body.phone + '</p>' // html body
     };
 
     // send mail with defined transport object

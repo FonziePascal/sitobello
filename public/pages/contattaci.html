@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en" class="font-primary">
   <head>
     <title>La Casa | Contattaci</title>
@@ -37,7 +36,12 @@
     <link rel="stylesheet" href="../assets/css/style.css">
 
     <!-- CSS Implementing Plugins -->
-<link  rel="stylesheet" href="../assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css">
+    <link  rel="stylesheet" href="../assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css">
+
+    <!-- CSS form -->
+    <link rel="stylesheet" href="../assets/skyforms/css/sky-forms.css">
+    <link rel="stylesheet" href="../assets/skyforms/custom/custom-sky-forms.css">
+
   </head>
 
   <body>
@@ -194,44 +198,51 @@
                 </div>
               </div>
             </div>
-
             <div class="row justify-content-center">
-              <div class="col-md-5">
-                <form action="/contactForm" method="post" id="form_contattaci" novalidate="novalidate">
-                  <div class="row">
-                    <div class="col-md-6 form-group g-mb-20">
-                      <label class="g-color-gray-dark-v2 g-font-size-13">Nome e Cognome</label>
-                      <input name="name" id="name" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="text" placeholder="Luca Rossi">
+              <form method="post" action="/contactForm" id="sky-form3" class="myform">
+                  <div class="col-md-5">
+
+                    <fieldset>
+                      <div class="row">
+                        <div class="col-md-6 form-group g-mb-20">
+                          <label class="g-color-gray-dark-v2 g-font-size-13">Nome e Cognome</label>
+                          <input name="name" id="name" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="text" placeholder="Luca Rossi">
+                        </div>
+
+                        <div class="col-md-6 form-group g-mb-20">
+                          <label class="g-color-gray-dark-v2 g-font-size-13">Oggetto</label>
+                          <input name="subject" id="subject" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="text" placeholder="Oggetto">
+                        </div>
+                      </div>
+
+                      <div class="g-mb-20">
+                        <label class="g-color-gray-dark-v2 g-font-size-13">Indirizzo email</label>
+                        <input name="mail" id="mail" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="email" placeholder="lucarossi@mail.com">
+                      </div>
+
+                      <div class="g-mb-20">
+                        <label class="g-color-gray-dark-v2 g-font-size-13">Numero di telefono</label>
+                        <input name="phone" id="phone" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="tel" placeholder="+ (01) 222 33 44">
+                      </div>
+                    </fieldset>
+
+                    <div class="myform message">
+                      <i class="rounded-x fa fa-check"></i>
+                      <p>Messaggio inviato!</p>
                     </div>
 
-                    <div class="col-md-6 form-group g-mb-20">
-                      <label class="g-color-gray-dark-v2 g-font-size-13">Oggetto</label>
-                      <input name="subject" id="subject" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="text" placeholder="Oggetto">
+                  </div>
+                  <div class="col-md-7">
+                    <div class="g-mb-40">
+                      <label class="g-color-gray-dark-v2 g-font-size-13">Messaggio</label>
+                      <textarea name="message" id="message" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15" rows="12" placeholder="Inserisci qui la tua richiesta"></textarea>
+                    </div>
+
+                    <div class="text-right">
+                      <button class="btn u-btn-primary g-font-weight-600 g-font-size-13 text-uppercase rounded-3 g-py-12 g-px-35" type="submit" role="button">Invia</button>
                     </div>
                   </div>
-
-                  <div class="g-mb-20">
-                    <label class="g-color-gray-dark-v2 g-font-size-13">Indirizzo email</label>
-                    <input name="mail" id="email2" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="email" placeholder="lucarossi@mail.com">
-                  </div>
-
-                  <div class="g-mb-20">
-                    <label class="g-color-gray-dark-v2 g-font-size-13">Numero di telefono</label>
-                    <input name="phone" id="phone" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus rounded-3 g-py-13 g-px-15" type="tel" placeholder="+ (01) 222 33 44">
-                  </div>
-
-                </form>
-              </div>
-              <div class="col-md-7">
-                <div class="g-mb-40">
-                  <label class="g-color-gray-dark-v2 g-font-size-13">Messaggio</label>
-                  <textarea name="message" id="message" class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15" rows="12" placeholder="Inserisci qui la tua richiesta"></textarea>
-                </div>
-
-                <div class="text-right">
-                  <button class="btn u-btn-primary g-font-weight-600 g-font-size-13 text-uppercase rounded-3 g-py-12 g-px-35" type="submit" role="button">Invia</button>
-                </div>
-              </div>
+              </form>
             </div>
           </section>
           <!-- End Contact Form -->
@@ -441,10 +452,15 @@
   <!-- JS Master Slider -->
   <script src="../assets/vendor/master-slider/source/assets/js/masterslider.min.js"></script>
 
+  <!-- SkyForm -->
+  <script src="../assets/skyforms/js/jquery.validate.min.js"></script>
+  <script src="../assets/skyforms/js/jquery.maskedinput.min.js"></script>
+  <script src="../assets/skyforms/js/jquery-ui.min.js"></script>
+  <script src="../assets/skyforms/js/jquery.form.min.js"></script>
+  <script src="../assets/skyforms/js/contact.js"></script>
+
   <!-- JS Custom -->
   <script src="../assets/js/custom.js"></script>
-
-  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
   <!-- JS Plugins Init. -->
   <script src="../assets/js/contattaci.js"></script>
